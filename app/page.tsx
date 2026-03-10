@@ -7,20 +7,12 @@ import { tools, categories, getFeaturedTools } from "@/data/tools";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [search, setSearch] = useState("");
 
   const featured = getFeaturedTools();
 
-  const filteredTools = tools.filter((tool) => {
-    const matchesCategory =
-      activeCategory === "All" || tool.categories.includes(activeCategory);
-    const matchesSearch =
-      search === "" ||
-      tool.name.toLowerCase().includes(search.toLowerCase()) ||
-      tool.tagline.toLowerCase().includes(search.toLowerCase()) ||
-      tool.categories.some((c) => c.toLowerCase().includes(search.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
+  const filteredTools = tools.filter((tool) =>
+    activeCategory === "All" || tool.categories.includes(activeCategory)
+  );
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f4f6f9" }}>
@@ -50,36 +42,12 @@ export default function Home() {
               <br />
               Software Tools
             </h1>
-            <p className="text-base md:text-lg mb-8" style={{ color: "#94b8d4" }}>
+            <p className="text-base md:text-lg mb-10" style={{ color: "#94b8d4" }}>
               Compare SPOTIO, SalesRabbit, Badger Maps, and 7 more platforms.
               Honest reviews, real pricing, and side-by-side comparisons — all in one place.
             </p>
 
-            <div className="relative max-w-xl mx-auto">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search tools, categories, industries..."
-                className="w-full px-5 py-4 pr-12 rounded-xl text-sm outline-none"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.95)",
-                  color: "#1a1f36",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
-                }}
-              />
-              <svg
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5"
-                fill="none"
-                stroke="#94a3b8"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-8 mt-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {[
                 { label: "Tools Listed", value: "10+" },
                 { label: "Categories", value: "5" },
@@ -190,16 +158,17 @@ export default function Home() {
               </div>
 
               <div className="rounded-xl p-5" style={{ backgroundColor: "#0f2340" }}>
-                <h3 className="font-bold text-sm mb-1 text-white">Not sure which tool to pick?</h3>
+                <h3 className="font-bold text-sm mb-1 text-white">Want to get listed?</h3>
                 <p className="text-xs mb-3" style={{ color: "#94b8d4" }}>
-                  Compare SPOTIO vs SalesRabbit, Badger Maps vs Map My Customers, and more.
+                  Reach thousands of field sales professionals. Featured placements from $299/mo.
                 </p>
-                <button
-                  className="w-full text-sm font-semibold py-2 rounded-lg text-white cursor-pointer"
+                <a
+                  href="/advertise"
+                  className="block w-full text-center text-sm font-semibold py-2 rounded-lg text-white no-underline"
                   style={{ backgroundColor: "#1d6ce8" }}
                 >
-                  Compare Tools →
-                </button>
+                  Advertise With Us →
+                </a>
               </div>
 
               <div className="ad-placeholder" style={{ height: "250px", width: "100%", flexDirection: "column", gap: "4px" }}>
