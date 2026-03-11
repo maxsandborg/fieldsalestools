@@ -3,7 +3,9 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getToolBySlug, getAllSlugs, tools } from "@/data/tools";
-import { getReview } from "@/data/reviews";
+import { getReview, reviewedSlugs } from "@/data/reviews";
+import { comparisons } from "@/data/comparisons";
+import { industries } from "@/data/industries";
 import ToolLogo from "@/components/ToolLogo";
 
 export async function generateStaticParams() {
@@ -63,6 +65,15 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
       t.slug !== tool.slug &&
       t.categories.some((c) => tool.categories.includes(c))
   ).slice(0, 3);
+
+  // Internal linking helpers
+  const hasAlternativesPage = reviewedSlugs.includes(tool.slug);
+  const relatedComparisons = comparisons.filter(
+    (c) => c.tool1 === tool.slug || c.tool2 === tool.slug
+  );
+  const toolIndustryPages = industries.filter((ind) =>
+    tool.industries.includes(ind.industryKey)
+  );
 
   // Parse numeric price from pricingFrom (e.g. "$25/user/month" → 25)
   const priceMatch = tool.pricingFrom.match(/\$(\d+)/);
@@ -517,6 +528,83 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 ))}
               </div>
             </section>
+
+            {/* Explore More — internal linking */}
+            {(hasAlternativesPage || relatedComparisons.length > 0 || toolIndustryPages.length > 0) && (
+              <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
+                <h2 className="text-lg font-black mb-5" style={{ color: "#0f2340" }}>Explore More</h2>
+                <div className="space-y-5">
+
+                  {/* Alternatives page */}
+                  {hasAlternativesPage && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
+                        Alternatives
+                      </p>
+                      <Link
+                        href={`/alternatives/${tool.slug}`}
+                        className="inline-flex items-center gap-2 text-sm font-semibold no-underline px-4 py-2 rounded-lg"
+                        style={{ backgroundColor: "#eef4ff", color: "#1d6ce8", border: "1px solid #dbeafe" }}
+                      >
+                        Best {tool.name} Alternatives
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
+
+                  {/* Compare pages */}
+                  {relatedComparisons.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
+                        Head-to-Head Comparisons
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {relatedComparisons.map((c) => (
+                          <Link
+                            key={c.slug}
+                            href={`/compare/${c.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg"
+                            style={{ backgroundColor: "#f1f5f9", color: "#374151", border: "1px solid #e2e8f0" }}
+                          >
+                            {c.title.replace(/ \(\d{4}\)$/, "")}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Industry pages */}
+                  {toolIndustryPages.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
+                        Industry Guides
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {toolIndustryPages.map((ind) => (
+                          <Link
+                            key={ind.slug}
+                            href={`/industries/${ind.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg"
+                            style={{ backgroundColor: "#f0fdf4", color: "#16a34a", border: "1px solid #bbf7d0" }}
+                          >
+                            {ind.name}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              </section>
+            )}
 
           </div>
 
