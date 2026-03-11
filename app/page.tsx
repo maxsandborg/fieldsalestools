@@ -49,7 +49,7 @@ export default function Home() {
 
             <div className="flex flex-wrap justify-center gap-8">
               {[
-                { label: "Tools Listed", value: "10+" },
+                { label: "Tools Listed", value: "20+" },
                 { label: "Categories", value: "5" },
                 { label: "Reviews", value: "2,800+" },
               ].map((stat) => (

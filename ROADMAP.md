@@ -135,6 +135,13 @@
 
 ---
 
+## BUGGLISTA — att åtgärda
+
+- [x] Startsidan visar "10+ Tools Listed" — ska vara "20+" (vi har 20 verktyg)
+- [x] Ta bort "Categories" från navbaren (404-sida, ersätts av Industries)
+
+---
+
 ## SESSION LOG
 
 ### 2026-03-10

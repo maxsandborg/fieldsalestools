@@ -57,21 +57,6 @@ export default function Header() {
               All Tools
             </Link>
             <Link
-              href="/#categories"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#c8dff0" }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#ffffff";
-                (e.target as HTMLElement).style.backgroundColor = "#1a3a5c";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#c8dff0";
-                (e.target as HTMLElement).style.backgroundColor = "transparent";
-              }}
-            >
-              Categories
-            </Link>
-            <Link
               href="/compare"
               className="text-sm font-medium px-3 py-2 rounded-md no-underline"
               style={{ color: "#c8dff0" }}
@@ -162,7 +147,6 @@ export default function Header() {
         <div style={{ backgroundColor: "#1a3a5c", borderTop: "1px solid #2a4a6e" }} className="md:hidden">
           <div className="px-4 py-3 flex flex-col gap-1">
             <Link href="/" className="text-white text-sm font-medium py-2 no-underline">All Tools</Link>
-            <Link href="/#categories" className="text-white text-sm font-medium py-2 no-underline">Categories</Link>
             <Link href="/compare" className="text-white text-sm font-medium py-2 no-underline">Compare</Link>
             <Link href="/industries" className="text-white text-sm font-medium py-2 no-underline">Industries</Link>
             <Link href="/about" className="text-white text-sm font-medium py-2 no-underline">About</Link>

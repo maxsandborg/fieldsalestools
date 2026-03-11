@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getToolBySlug, getAllSlugs, tools } from "@/data/tools";
+import { getReview } from "@/data/reviews";
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -53,6 +54,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
+
+  const review = getReview(slug);
 
   const related = tools.filter(
     (t) =>
@@ -203,6 +206,90 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 ))}
               </div>
             </section>
+
+            {/* Editorial Review — shown only for reviewed tools */}
+            {review && (
+              <>
+                {/* Editor score banner */}
+                <section className="rounded-2xl p-6" style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className="flex-shrink-0 text-center">
+                      <div className="text-5xl font-black text-white">{review.editorScore}</div>
+                      <div className="text-xs font-semibold uppercase tracking-wider mt-1" style={{ color: "#6fa3c8" }}>Editor Score</div>
+                      <div className="text-xs mt-0.5" style={{ color: "#4a6a8a" }}>out of 10</div>
+                    </div>
+                    <div className="flex-1" style={{ borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: "1.5rem" }}>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#6fa3c8" }}>Editor&apos;s Verdict</p>
+                      <p className="text-white font-medium leading-relaxed">&ldquo;{review.editorVerdict}&rdquo;</p>
+                      <p className="text-xs mt-2" style={{ color: "#4a6a8a" }}>Last tested: {review.lastTested} · FieldSalesTools Editorial Team</p>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Full review */}
+                <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
+                  <h2 className="text-lg font-black mb-5" style={{ color: "#0f2340" }}>Full Review</h2>
+                  <div className="space-y-4">
+                    {review.reviewBody.map((para, i) => (
+                      <p key={i} className="text-sm leading-relaxed" style={{ color: "#475569" }}>{para}</p>
+                    ))}
+                  </div>
+
+                  {/* Who should use / avoid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8 pt-6" style={{ borderTop: "1px solid #f1f5f9" }}>
+                    <div>
+                      <h3 className="text-sm font-bold mb-3 flex items-center gap-2" style={{ color: "#16a34a" }}>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Who Should Use {tool.name}
+                      </h3>
+                      <ul className="space-y-2">
+                        {review.whoShouldUse.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
+                            <span className="text-green-500 mt-0.5 flex-shrink-0">✓</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold mb-3 flex items-center gap-2" style={{ color: "#dc2626" }}>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        Who Should Avoid {tool.name}
+                      </h3>
+                      <ul className="space-y-2">
+                        {review.whoShouldAvoid.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
+                            <span className="flex-shrink-0 mt-0.5" style={{ color: "#dc2626" }}>✗</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Bottom line */}
+                  <div className="mt-6 rounded-xl p-4" style={{ backgroundColor: "#f0f6ff", border: "1px solid #dbeafe" }}>
+                    <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: "#1d6ce8" }}>Bottom Line</p>
+                    <p className="text-sm leading-relaxed font-medium" style={{ color: "#1e3a5f" }}>{review.bottomLine}</p>
+                  </div>
+
+                  {/* Link to alternatives */}
+                  <div className="mt-4 text-center">
+                    <Link
+                      href={`/alternatives/${tool.slug}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold no-underline"
+                      style={{ color: "#1d6ce8" }}
+                    >
+                      View best {tool.name} alternatives →
+                    </Link>
+                  </div>
+                </section>
+              </>
+            )}
 
             {/* Key Features */}
             <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
