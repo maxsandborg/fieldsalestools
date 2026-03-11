@@ -7,14 +7,13 @@ import { getIndustry, getAllIndustrySlugs } from "@/data/industries";
 import { tools } from "@/data/tools";
 import type { Metadata } from "next";
 
-type Props = { params: { slug: string } };
-
 export async function generateStaticParams() {
   return getAllIndustrySlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const ind = getIndustry(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const ind = getIndustry(slug);
   if (!ind) return { title: "Industry Not Found" };
   return {
     title: ind.metaTitle,
@@ -22,8 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function IndustryPage({ params }: Props) {
-  const ind = getIndustry(params.slug);
+export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const ind = getIndustry(slug);
   if (!ind) notFound();
 
   // Get tools that serve this industry
