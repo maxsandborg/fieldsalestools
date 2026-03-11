@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.fieldsalestools.com",
   },
+  verification: {
+    google: "Sq04kzjr8rhtp57XI271jwngsVOt5zfJKNoVigHnDg4",
+  },
 };
 
 // Site-wide JSON-LD: Organization + WebSite (with SearchAction for Google Sitelinks Search Box)
