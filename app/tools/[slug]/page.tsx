@@ -75,6 +75,52 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     tool.industries.includes(ind.industryKey)
   );
 
+  // FAQ generation from existing tool data
+  const hasFree = tool.pricing.some(
+    (t) => t.price === "Free" || t.price === "$0" || t.price.toLowerCase().includes("free")
+  );
+  const hasMobileApp = tool.platforms.some(
+    (p) => p.toLowerCase().includes("ios") || p.toLowerCase().includes("android")
+  );
+  const faqs: { question: string; answer: string }[] = [
+    {
+      question: `Is ${tool.name} free?`,
+      answer: hasFree
+        ? `Yes, ${tool.name} offers a free plan. Paid plans start from ${tool.pricingFrom}.`
+        : `${tool.name} does not offer a free plan. Pricing starts from ${tool.pricingFrom} (${tool.pricingModel}). There is no permanent free tier, though a demo or trial may be available.`,
+    },
+    {
+      question: `How much does ${tool.name} cost?`,
+      answer: `${tool.name} pricing starts from ${tool.pricingFrom}. The billing model is ${tool.pricingModel}. ${
+        tool.pricing.filter((t) => t.price !== "Custom").length > 0
+          ? `Plans include: ${tool.pricing.map((t) => `${t.name} at ${t.price}${t.period ? " " + t.period : ""}`).join("; ")}.`
+          : "Enterprise pricing is available on request."
+      }`,
+    },
+    {
+      question: `Does ${tool.name} have a mobile app?`,
+      answer: hasMobileApp
+        ? `Yes, ${tool.name} has a mobile app available on ${tool.platforms.filter((p) => p.toLowerCase().includes("ios") || p.toLowerCase().includes("android")).join(" and ")}. It is also accessible via ${tool.platforms.filter((p) => !p.toLowerCase().includes("ios") && !p.toLowerCase().includes("android")).join(", ") || "web browser"}.`
+        : `${tool.name} is accessible via ${tool.platforms.join(", ")}. There is no dedicated iOS or Android app.`,
+    },
+    ...(tool.industries.length > 0
+      ? [
+          {
+            question: `What industries is ${tool.name} best for?`,
+            answer: `${tool.name} is most commonly used in ${tool.industries.slice(0, 5).join(", ")}${tool.industries.length > 5 ? ` and ${tool.industries.length - 5} other industries` : ""}. It is particularly suited for ${tool.companySize.join(" and ")} companies.`,
+          },
+        ]
+      : []),
+    ...(tool.integrations.length > 0
+      ? [
+          {
+            question: `What does ${tool.name} integrate with?`,
+            answer: `${tool.name} integrates with ${tool.integrations.slice(0, 6).join(", ")}${tool.integrations.length > 6 ? `, and ${tool.integrations.length - 6} more tools` : ""}. Most integrations are available on paid plans.`,
+          },
+        ]
+      : []),
+  ];
+
   // Parse numeric price from pricingFrom (e.g. "$25/user/month" → 25)
   const priceMatch = tool.pricingFrom.match(/\$(\d+)/);
   const numericPrice = priceMatch ? priceMatch[1] : null;
@@ -126,6 +172,17 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             "datePublished": "2026-03-01"
           }
         })
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -605,6 +662,29 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 </div>
               </section>
             )}
+
+            {/* FAQ section — visible on page (required for FAQPage schema to qualify for rich results) */}
+            <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
+              <h2 className="text-lg font-black mb-5" style={{ color: "#0f2340" }}>
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {faqs.map((faq, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-4"
+                    style={{ backgroundColor: "#f8fafc", border: "1px solid #f1f5f9" }}
+                  >
+                    <h3 className="text-sm font-bold mb-1.5" style={{ color: "#0f2340" }}>
+                      {faq.question}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
           </div>
 
