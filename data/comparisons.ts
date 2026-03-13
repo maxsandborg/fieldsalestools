@@ -16,7 +16,7 @@ export type ComparisonData = {
 export const comparisons: ComparisonData[] = [
   {
     slug: "spotio-vs-salesrabbit",
-    title: "SPOTIO vs SalesRabbit (2025)",
+    title: "SPOTIO vs SalesRabbit (2026)",
     metaDescription:
       "SPOTIO vs SalesRabbit — an honest, research-backed comparison of pricing, features, use cases, and real user reviews. Which D2D platform is right for your team?",
     tool1: "spotio",
@@ -49,7 +49,7 @@ export const comparisons: ComparisonData[] = [
 
   {
     slug: "spotio-vs-badger-maps",
-    title: "SPOTIO vs Badger Maps (2025)",
+    title: "SPOTIO vs Badger Maps (2026)",
     metaDescription:
       "SPOTIO vs Badger Maps — which field sales tool is right for your team? Compare pricing, use cases, ratings, and real user feedback.",
     tool1: "spotio",
@@ -68,7 +68,7 @@ export const comparisons: ComparisonData[] = [
       { label: "Free Trial", tool1: "None", tool2: "14-day free trial + 90-day guarantee" },
       { label: "G2 Rating", tool1: "4.5/5 — 387 reviews", tool2: "4.7/5 — 270 reviews" },
       { label: "Support Score (G2)", tool1: "Good", tool2: "9.4/10 — category best" },
-      { label: "Revenue (2025)", tool1: "$3.6M (2024)", tool2: "$8M — profitable & self-funded" },
+      { label: "Revenue (2026)", tool1: "$3.6M (2024)", tool2: "$8M — profitable & self-funded" },
       { label: "Customers", tool1: "1,500+ teams", tool2: "4,000+ customers" },
       { label: "Founded", tool1: "2014", tool2: "2012 — most established" },
       { label: "Territory Management", tool1: "Deep — 200+ data overlays", tool2: "Standard — zone-based" },
@@ -83,7 +83,7 @@ export const comparisons: ComparisonData[] = [
 
   {
     slug: "salesrabbit-vs-knockbase",
-    title: "SalesRabbit vs Knockbase (2025)",
+    title: "SalesRabbit vs Knockbase (2026)",
     metaDescription:
       "SalesRabbit vs Knockbase — compare pricing, features, maturity, and real user reviews. Which D2D platform fits your canvassing team?",
     tool1: "salesrabbit",
@@ -116,7 +116,7 @@ export const comparisons: ComparisonData[] = [
 
   {
     slug: "badger-maps-vs-map-my-customers",
-    title: "Badger Maps vs Map My Customers (2025)",
+    title: "Badger Maps vs Map My Customers (2026)",
     metaDescription:
       "Badger Maps vs Map My Customers — honest comparison of pricing, features, and ratings for outside sales teams. Which route planning CRM is right for you?",
     tool1: "badger-maps",
@@ -150,7 +150,7 @@ export const comparisons: ComparisonData[] = [
 
   {
     slug: "spotio-vs-knockbase",
-    title: "SPOTIO vs Knockbase (2025)",
+    title: "SPOTIO vs Knockbase (2026)",
     metaDescription:
       "SPOTIO vs Knockbase — compare pricing, features, company maturity, and use cases for D2D and canvassing sales teams.",
     tool1: "spotio",
@@ -183,7 +183,7 @@ export const comparisons: ComparisonData[] = [
 
   {
     slug: "repmove-vs-badger-maps",
-    title: "RepMove vs Badger Maps (2025)",
+    title: "RepMove vs Badger Maps (2026)",
     metaDescription:
       "RepMove vs Badger Maps — an honest comparison of the budget-friendly upstart vs the established route optimization leader. Who wins on value, ratings, and features?",
     tool1: "repmove",
@@ -978,7 +978,7 @@ export const comparisons: ComparisonData[] = [
       { label: "Territory Management", tool1: "Account-based territories for retail", tool2: "Geo-based heat maps with 200+ data overlays" },
       { label: "Photo Capture / Audits", tool1: "Core feature — retail compliance evidence", tool2: "Basic — not an audit/form tool" },
       { label: "CRM Integrations", tool1: "Salesforce, HubSpot, SAP", tool2: "Salesforce, HubSpot, NetSuite, AccuLynx + 5,000 via Zapier" },
-      { label: "Revenue (2025)", tool1: "Profitable — specific revenue not public", tool2: "$3.6M ARR (2024)" },
+      { label: "Revenue (2026)", tool1: "Profitable — specific revenue not public", tool2: "$3.6M ARR (2024)" },
     ],
     winnerOverall: "tie",
     winnerReason:

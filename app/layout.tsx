@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.fieldsalestools.com"),
   title: {
     default: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
-    template: "%s | FieldSalesTools.com",
+    template: "%s",
   },
   description:
     "Independent reviews of 20+ field sales, D2D, and canvassing software tools. Compare pricing, features, and editor scores — find the right software for your team.",

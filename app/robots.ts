@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/privacy", "/disclaimer"],
+      disallow: [],
     },
     sitemap: "https://www.fieldsalestools.com/sitemap.xml",
   };
