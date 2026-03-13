@@ -1,25 +1,48 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Field Sales Tools — The #1 Directory for D2D & Field Sales Software",
+  metadataBase: new URL("https://www.fieldsalestools.com"),
+  title: {
+    default: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
+    template: "%s | FieldSalesTools.com",
+  },
   description:
-    "Compare the best field sales and door-to-door software tools. Honest reviews, pricing, and comparisons of SPOTIO, SalesRabbit, Badger Maps, and more.",
-  keywords:
-    "field sales software, D2D software, door to door sales app, canvassing software, territory management, sales rabbit, spotio",
+    "Independent reviews of 20+ field sales, D2D, and canvassing software tools. Compare pricing, features, and editor scores — find the right software for your team.",
+  keywords: [
+    "field sales software stack",
+    "field sales tech stack",
+    "door to door sales tools",
+    "field sales CRM",
+    "canvassing software",
+    "field sales apps",
+    "roofing sales tools",
+    "solar sales tools",
+    "D2D sales software",
+  ],
   openGraph: {
-    title: "Field Sales Tools — The #1 Directory for D2D & Field Sales Software",
-    description:
-      "Compare the best field sales and door-to-door software tools. Honest reviews and pricing.",
-    url: "https://www.fieldsalestools.com",
-    siteName: "FieldSalesTools.com",
     type: "website",
+    siteName: "FieldSalesTools.com",
+    title: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
+    description:
+      "Discover the best software stack for your field sales team. Curated tool combinations by industry and team size — with real pricing and honest reviews.",
+    images: [
+      {
+        url: "https://www.fieldsalestools.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "FieldSalesTools.com — Curated Tech Stacks for Field Sales Teams",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Field Sales Tools — The #1 Directory for D2D & Field Sales Software",
+    title: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
     description:
-      "Compare the best field sales and door-to-door software tools. Honest reviews and pricing.",
+      "Discover the best software stack for your field sales team. Curated tool combinations by industry and team size.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
   },
   robots: {
     index: true,
@@ -32,72 +55,46 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.fieldsalestools.com",
-  },
-  verification: {
-    google: "Sq04kzjr8rhtp57XI271jwngsVOt5zfJKNoVigHnDg4",
-  },
 };
 
-// Site-wide JSON-LD: Organization + WebSite (with SearchAction for Google Sitelinks Search Box)
-const siteSchema = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://www.fieldsalestools.com/#organization",
-      "name": "FieldSalesTools.com",
-      "url": "https://www.fieldsalestools.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.fieldsalestools.com/logo.png",
-        "width": 200,
-        "height": 60
-      },
-      "description":
-        "The leading directory for field sales and door-to-door software. Honest reviews, pricing comparisons, and expert recommendations for D2D sales teams.",
-      "sameAs": []
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.fieldsalestools.com/#website",
-      "url": "https://www.fieldsalestools.com",
-      "name": "FieldSalesTools.com",
-      "description":
-        "The #1 directory for field sales and D2D software tools. Compare SPOTIO, SalesRabbit, Badger Maps, and 17 more platforms.",
-      "publisher": {
-        "@id": "https://www.fieldsalestools.com/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://www.fieldsalestools.com/?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-  ]
+  "@type": "Organization",
+  name: "FieldSalesTools.com",
+  url: "https://www.fieldsalestools.com",
+  description:
+    "Curated tech stacks for field sales teams by industry and team size.",
+  sameAs: ["https://www.fieldsalestools.com"],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Plausible Analytics — privacy-friendly, GDPR-compliant, no cookie banner needed */}
-        <script async src="https://plausible.io/js/pa-PM_qMeNbU04A4AkKj0B2x.js" />
-        <script dangerouslySetInnerHTML={{ __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()` }} />
+        {/* Plausible Analytics */}
+        <script
+          async
+          src="https://plausible.io/js/pa-PM_qMeNbU04A4AkKj0B2x.js"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
+          }}
+        />
       </head>
-      <body className="antialiased">{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

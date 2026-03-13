@@ -1,105 +1,160 @@
 import Link from "next/link";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer style={{ backgroundColor: "#0f2340", color: "#94a3b8" }}>
-      {/* Ad banner above footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>
-          Advertisement — 728×90
-        </div>
-      </div>
-
-      <div style={{ borderTop: "1px solid #1e3d63" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Brand */}
-            <div className="md:col-span-1">
-              <div className="flex items-center gap-2 mb-3">
-                <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center text-white font-black text-xs"
-                  style={{ backgroundColor: "#1d6ce8" }}
-                >
-                  FST
-                </div>
-                <span className="text-white font-bold text-sm">FieldSalesTools.com</span>
+    <footer style={{ background: "#0f2340", color: "#94a3b8", marginTop: 80 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 20px 32px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
+          {/* Brand */}
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  background: "linear-gradient(135deg, #1d6ce8, #3b82f6)",
+                  borderRadius: 8,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 16,
+                }}
+              >
+                🛠️
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "#64a3d4" }}>
-                The most comprehensive directory of field sales and door-to-door software tools. Trusted by sales managers and D2D teams.
-              </p>
+              <span style={{ color: "#fff", fontWeight: 800, fontSize: 16 }}>FieldSalesTools.com</span>
             </div>
+            <p style={{ fontSize: 13, lineHeight: 1.6, margin: "0 0 12px" }}>
+              The #1 resource for field sales teams. Curated tool reviews, tech stack guides, and head-to-head comparisons.
+            </p>
+            <p style={{ fontSize: 12, lineHeight: 1.5, margin: 0, color: "#64748b" }}>
+              FieldSalesTools.com is reader-supported. We may earn a commission when you buy tools we recommend.{" "}
+              <Link href="/disclaimer" style={{ color: "#1d6ce8", textDecoration: "none" }}>Learn more</Link>
+            </p>
+          </div>
 
-            {/* Tools */}
-            <div>
-              <h4 className="text-white text-sm font-semibold mb-3">Top Tools</h4>
-              <ul className="space-y-2">
-                {["SPOTIO", "SalesRabbit", "Badger Maps", "Map My Customers", "Knockbase"].map((tool) => (
-                  <li key={tool}>
-                    <Link
-                      href={`/tools/${tool.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-xs no-underline hover:text-white"
-                      style={{ color: "#94a3b8" }}
-                    >
-                      {tool}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h4 className="text-white text-sm font-semibold mb-3">Categories</h4>
-              <ul className="space-y-2">
-                {["D2D Software", "Field Sales CRM", "Canvassing Tools", "Territory Management", "Route Planning"].map((cat) => (
-                  <li key={cat}>
-                    <Link
-                      href={`/#${cat.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-xs no-underline hover:text-white"
-                      style={{ color: "#94a3b8" }}
-                    >
-                      {cat}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Site */}
-            <div>
-              <h4 className="text-white text-sm font-semibold mb-3">Site</h4>
-              <ul className="space-y-2">
-                {[
-                  { label: "Submit a Tool", href: "/submit" },
-                  { label: "Advertise With Us", href: "/advertise" },
-                  { label: "About", href: "/about" },
-                  { label: "Privacy Policy", href: "/privacy" },
-                  { label: "Disclaimer", href: "/disclaimer" },
-                ].map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-xs no-underline hover:text-white"
-                      style={{ color: "#94a3b8" }}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          {/* Tools */}
+          <div>
+            <h4 style={{ color: "#fff", fontWeight: 700, fontSize: 13, marginBottom: 12, marginTop: 0, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Tools
+            </h4>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {[
+                { href: "/tools", label: "All Tools" },
+                { href: "/tools/spotio", label: "SPOTIO" },
+                { href: "/tools/salesrabbit", label: "SalesRabbit" },
+                { href: "/tools/badger-maps", label: "Badger Maps" },
+                { href: "/tools/knockio", label: "Knockio" },
+                { href: "/compare", label: "Compare Tools" },
+                { href: "/alternatives/spotio-alternatives", label: "SPOTIO Alternatives" },
+                { href: "/alternatives/salesrabbit-alternatives", label: "SalesRabbit Alternatives" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div
-            style={{ borderTop: "1px solid #1e3d63" }}
-            className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          >
-            <p className="text-xs" style={{ color: "#4a6a8a" }}>
-              © {new Date().getFullYear()} FieldSalesTools.com — All rights reserved.
-            </p>
-            <p className="text-xs text-center" style={{ color: "#4a6a8a" }}>
-              Some links on this site may be affiliate links. We may earn a commission at no extra cost to you.
-            </p>
+          {/* Industry Stacks */}
+          <div>
+            <h4 style={{ color: "#fff", fontWeight: 700, fontSize: 13, marginBottom: 12, marginTop: 0, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Industry Stacks
+            </h4>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {[
+                { href: "/stacks/roofing", label: "Roofing" },
+                { href: "/stacks/solar", label: "Solar" },
+                { href: "/stacks/pest-control", label: "Pest Control" },
+                { href: "/stacks/hvac", label: "HVAC" },
+                { href: "/stacks/telecom-fiber", label: "Telecom & Fiber" },
+                { href: "/stacks/medical-devices", label: "Medical Devices" },
+                { href: "/industries", label: "All Industries" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 style={{ color: "#fff", fontWeight: 700, fontSize: 13, marginBottom: 12, marginTop: 0, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Company
+            </h4>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+              {[
+                { href: "/about", label: "About" },
+                { href: "/advertise", label: "Advertise" },
+                { href: "/submit", label: "Submit a Tool" },
+                { href: "/privacy", label: "Privacy Policy" },
+                { href: "/disclaimer", label: "Disclaimer" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <h4 style={{ color: "#fff", fontWeight: 700, fontSize: 13, marginBottom: 12, marginTop: 0, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              Team Size
+            </h4>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {[
+                { href: "/stacks/solo-rep", label: "Solo Rep" },
+                { href: "/stacks/smb-team", label: "Small Team (2–20)" },
+                { href: "/stacks/mid-market-team", label: "Mid-Market (20–100)" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  style={{ color: "#94a3b8", textDecoration: "none", fontSize: 13 }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            paddingTop: 24,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <p style={{ margin: 0, fontSize: 12 }}>
+            © {currentYear} FieldSalesTools.com. Independent research — not affiliated with any software vendor.
+          </p>
+          <div style={{ display: "flex", gap: 20 }}>
+            <Link href="/privacy" style={{ color: "#64748b", textDecoration: "none", fontSize: 12 }}>
+              Privacy
+            </Link>
+            <Link href="/disclaimer" style={{ color: "#64748b", textDecoration: "none", fontSize: 12 }}>
+              Disclaimer
+            </Link>
+            <Link href="/advertise" style={{ color: "#64748b", textDecoration: "none", fontSize: 12 }}>
+              Advertise
+            </Link>
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { getComparison, getAllComparisonSlugs } from "@/data/comparisons";
 import { getToolBySlug, tools } from "@/data/tools";
 import type { Metadata } from "next";
+import AffiliateBanner from "@/components/AffiliateBanner";
+import AuthorByline from "@/components/AuthorByline";
 
 // Parse slug like "spotio-vs-salesrabbit" → ["spotio", "salesrabbit"]
 function parseSlugs(slug: string): [string, string] | null {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = getComparison(slug) ?? getComparison(
     (() => { const p = parseSlugs(slug); return p ? `${p[1]}-vs-${p[0]}` : ""; })()
   );
-  if (c) return { title: c.title + " | FieldSalesTools.com", description: c.metaDescription };
+  if (c) return { title: c.title + " | FieldSalesTools.com", description: c.metaDescription, alternates: { canonical: `https://www.fieldsalestools.com/compare/${slug}` } };
 
   const parsed = parseSlugs(slug);
   if (!parsed) return { title: "Comparison Not Found" };
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${t1.name} vs ${t2.name} (${new Date().getFullYear()}) | FieldSalesTools.com`,
     description: `${t1.name} vs ${t2.name} — compare pricing, features, ratings, and use cases for field sales teams.`,
+    alternates: { canonical: `https://www.fieldsalestools.com/compare/${slug}` },
   };
 }
 
@@ -145,7 +146,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(compareSchema) }}
       />
-      <Header />
+
 
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
@@ -163,7 +164,13 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
       </section>
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10">
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>Advertisement — 728×90</div>
+        {/* FTC Affiliate Disclosure */}
+        <AffiliateBanner />
+
+        {/* Author byline */}
+        <AuthorByline variant="compact" lastUpdated="March 2026" />
+
+        <div style={{ display: "none" }}></div>
 
         {/* Tool overview cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
@@ -194,7 +201,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               <p className="text-sm leading-relaxed mb-4" style={{ color: "#475569" }}>
                 <strong>Best for:</strong> {bestFor}
               </p>
-              <a href={tool.affiliateUrl ?? tool.website} target="_blank" rel="noopener noreferrer nofollow" className="block w-full text-center text-sm font-semibold py-2.5 rounded-lg text-white no-underline" style={{ backgroundColor: "#1d6ce8" }}>
+              <a href={`/api/go/${tool.slug}`} target="_blank" rel="noopener noreferrer nofollow sponsored" className="block w-full text-center text-sm font-semibold py-2.5 rounded-lg text-white no-underline" style={{ backgroundColor: "#1d6ce8" }}>
                 Visit {name} →
               </a>
             </div>
@@ -260,7 +267,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           </div>
         )}
 
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>Advertisement — 728×90</div>
+        <div style={{ display: "none" }}></div>
 
         {/* Verdict */}
         <section className="rounded-2xl p-6 mb-8" style={{ background: "linear-gradient(135deg, #0f2340, #1a3a5c)" }}>
@@ -286,7 +293,7 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
               <h3 className="font-black text-base mb-1" style={{ color: "#0f2340" }}>Choose {name} if…</h3>
               <p className="text-sm mb-4" style={{ color: "#64748b" }}>{bestFor}</p>
               <div className="flex gap-2">
-                <a href={tool.affiliateUrl ?? tool.website} target="_blank" rel="noopener noreferrer nofollow" className="flex-1 text-center text-sm font-semibold py-2 rounded-lg text-white no-underline" style={{ backgroundColor: "#1d6ce8" }}>
+                <a href={`/api/go/${tool.slug}`} target="_blank" rel="noopener noreferrer nofollow sponsored" className="flex-1 text-center text-sm font-semibold py-2 rounded-lg text-white no-underline" style={{ backgroundColor: "#1d6ce8" }}>
                   Try {name}
                 </a>
                 <Link href={`/tools/${tool.slug}`} className="flex-1 text-center text-sm font-semibold py-2 rounded-lg no-underline" style={{ backgroundColor: "#f1f5f9", color: "#0f2340" }}>
@@ -303,8 +310,12 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
             ← Compare other tools
           </Link>
         </div>
+
+        {/* Author byline — full card at end */}
+        <AuthorByline variant="full" lastUpdated="March 2026" />
+
       </main>
-      <Footer />
+
     </div>
   );
 }

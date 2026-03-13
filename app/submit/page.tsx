@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Submit Your Tool | FieldSalesTools.com",
@@ -9,7 +7,7 @@ export const metadata = {
 export default function SubmitPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f4f6f9" }}>
-      <Header />
+
 
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
@@ -220,7 +218,7 @@ export default function SubmitPage() {
         </section>
       </main>
 
-      <Footer />
+
     </div>
   );
 }

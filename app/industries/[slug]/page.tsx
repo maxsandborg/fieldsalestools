@@ -1,6 +1,4 @@
 import { notFound } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import ToolCard from "@/components/ToolCard";
 import { getIndustry, getAllIndustrySlugs } from "@/data/industries";
@@ -33,7 +31,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f4f6f9" }}>
-      <Header />
+
 
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
@@ -53,9 +51,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10">
 
         {/* Top ad */}
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>
-          Advertisement — 728×90 Leaderboard
-        </div>
+        <div style={{ display: "none" }}></div>
 
         {/* Intro */}
         <section className="bg-white rounded-2xl p-6 mb-8" style={{ border: "1px solid #e2e8f0" }}>
@@ -100,9 +96,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </section>
 
         {/* Mid ad */}
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>
-          Advertisement — 728×90 Leaderboard
-        </div>
+        <div style={{ display: "none" }}></div>
 
         {/* Top Features */}
         <section className="mb-10">
@@ -165,7 +159,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
         </div>
       </main>
 
-      <Footer />
+
     </div>
   );
 }

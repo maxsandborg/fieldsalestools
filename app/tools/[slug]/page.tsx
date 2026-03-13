@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { getToolBySlug, getAllSlugs, tools } from "@/data/tools";
 import { getReview, reviewedSlugs } from "@/data/reviews";
 import { comparisons } from "@/data/comparisons";
 import { industries } from "@/data/industries";
 import ToolLogo from "@/components/ToolLogo";
+import AffiliateBanner from "@/components/AffiliateBanner";
+import AuthorByline from "@/components/AuthorByline";
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${tool.name} Review 2026 — Pricing, Features & Alternatives | FieldSalesTools.com`,
     description: `Honest ${tool.name} review: features, pricing, pros and cons. Is ${tool.name} right for your field sales team? Compare with top alternatives.`,
+    alternates: { canonical: `https://www.fieldsalestools.com/tools/${tool.slug}` },
   };
 }
 
@@ -166,7 +167,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             },
             "author": {
               "@type": "Organization",
-              "name": "FieldSalesTools Editorial Team"
+              "name": "FieldSalesTools.com Editorial Team"
             },
             "reviewBody": review.reviewBody[0],
             "datePublished": "2026-03-01"
@@ -197,7 +198,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             "@type": "ListItem",
             "position": 2,
             "name": "All Tools",
-            "item": "https://www.fieldsalestools.com"
+            "item": "https://www.fieldsalestools.com/tools"
           },
           {
             "@type": "ListItem",
@@ -216,7 +217,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
-      <Header />
+
 
       {/* Tool hero */}
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
@@ -225,7 +226,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           <nav className="flex items-center gap-2 text-xs mb-6" style={{ color: "#6fa3c8" }}>
             <Link href="/" className="no-underline hover:text-white" style={{ color: "#6fa3c8" }}>Home</Link>
             <span>/</span>
-            <Link href="/" className="no-underline hover:text-white" style={{ color: "#6fa3c8" }}>Tools</Link>
+            <Link href="/tools" className="no-underline hover:text-white" style={{ color: "#6fa3c8" }}>Tools</Link>
             <span>/</span>
             <span className="text-white">{tool.name}</span>
           </nav>
@@ -309,9 +310,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 ))}
               </div>
               <a
-                href={tool.affiliateUrl || tool.website}
+                href={`/api/go/${tool.slug}`}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener noreferrer nofollow sponsored"
                 className="block w-full text-center text-sm font-bold py-3 rounded-xl no-underline text-white mb-3"
                 style={{ backgroundColor: "#1d6ce8" }}
               >
@@ -327,9 +328,15 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-10">
 
+        {/* FTC Affiliate Disclosure */}
+        <AffiliateBanner />
+
+        {/* Author byline */}
+        <AuthorByline variant="compact" lastUpdated="March 2026" />
+
         {/* Top leaderboard ad */}
-        <div className="ad-placeholder w-full mb-8" style={{ height: "90px" }}>
-          Advertisement — 728×90
+        <div className="ad-placeholder w-full mb-8" style={{ display: "none",  height: "90px" }}>
+          
         </div>
 
         <div className="flex gap-8 items-start">
@@ -377,7 +384,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                     <div className="flex-1" style={{ borderLeft: "1px solid rgba(255,255,255,0.1)", paddingLeft: "1.5rem" }}>
                       <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#6fa3c8" }}>Editor&apos;s Verdict</p>
                       <p className="text-white font-medium leading-relaxed">&ldquo;{review.editorVerdict}&rdquo;</p>
-                      <p className="text-xs mt-2" style={{ color: "#4a6a8a" }}>Last tested: {review.lastTested} · FieldSalesTools Editorial Team</p>
+                      <p className="text-xs mt-2" style={{ color: "#4a6a8a" }}>Last tested: {review.lastTested} · FieldSalesTools.com Editorial Team</p>
                     </div>
                   </div>
                 </section>
@@ -468,7 +475,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             </section>
 
             {/* Mid-content ad */}
-            <div className="ad-placeholder w-full" style={{ height: "90px" }}>
+            <div className="ad-placeholder w-full" style={{ display: "none",  height: "90px" }}>
               Advertisement — 728×90
             </div>
 
@@ -686,12 +693,15 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               </div>
             </section>
 
+            {/* Author byline — full card at end of content */}
+            <AuthorByline variant="full" lastUpdated="March 2026" />
+
           </div>
 
           {/* Sidebar */}
           <aside className="hidden lg:flex flex-col gap-5 w-64 flex-shrink-0">
-            <div className="ad-placeholder" style={{ height: "250px", width: "100%", flexDirection: "column", gap: "4px" }}>
-              Advertisement<br />300×250
+            <div className="ad-placeholder" style={{ display: "none",  height: "250px", width: "100%", flexDirection: "column", gap: "4px" }}>
+              
             </div>
 
             {/* Quick summary card */}
@@ -711,9 +721,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                 ))}
               </div>
               <a
-                href={tool.affiliateUrl || tool.website}
+                href={`/api/go/${tool.slug}`}
                 target="_blank"
-                rel="noopener noreferrer nofollow"
+                rel="noopener noreferrer nofollow sponsored"
                 className="block w-full text-center text-sm font-bold py-2.5 rounded-lg no-underline text-white mt-4"
                 style={{ backgroundColor: "#1d6ce8" }}
               >
@@ -721,8 +731,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               </a>
             </div>
 
-            <div className="ad-placeholder" style={{ height: "250px", width: "100%", flexDirection: "column", gap: "4px" }}>
-              Advertisement<br />300×250
+            <div className="ad-placeholder" style={{ display: "none",  height: "250px", width: "100%", flexDirection: "column", gap: "4px" }}>
+              
             </div>
 
             {/* Related tools */}
@@ -754,7 +764,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         </div>
       </main>
 
-      <Footer />
+
     </div>
   );
 }

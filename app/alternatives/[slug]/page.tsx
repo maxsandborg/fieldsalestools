@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { getToolBySlug, tools } from "@/data/tools";
 import { getReview, reviewedSlugs } from "@/data/reviews";
+import AffiliateBanner from "@/components/AffiliateBanner";
 
 export async function generateStaticParams() {
   return reviewedSlugs.map((slug) => ({ slug }));
@@ -17,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `Best ${tool.name} Alternatives (2026) — Honest Comparison | FieldSalesTools.com`,
     description: `Looking for ${tool.name} alternatives? We compared the top options on pricing, features, and real user ratings. Find the best replacement for your field sales team.`,
+    alternates: { canonical: `https://www.fieldsalestools.com/alternatives/${slug}-alternatives` },
   };
 }
 
@@ -168,7 +168,7 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
       {
         "@type": "ItemList",
         "name": `Best ${tool.name} Alternatives 2026`,
-        "description": `The top alternatives to ${tool.name} for field sales teams, ranked and reviewed by FieldSalesTools.`,
+        "description": `The top alternatives to ${tool.name} for field sales teams, ranked and reviewed by FieldSalesTools.com.`,
         "url": `https://www.fieldsalestools.com/alternatives/${slug}`,
         "numberOfItems": alternatives.length,
         "itemListElement": alternatives.map((alt, i) => ({
@@ -208,7 +208,7 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
-      <Header />
+
 
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
@@ -234,13 +234,16 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
               Updated March 2026
             </span>
             <span className="text-sm px-3 py-1 rounded-full font-medium text-white" style={{ backgroundColor: "rgba(255,255,255,0.12)" }}>
-              FieldSalesTools Editorial Team
+              FieldSalesTools.com Editorial Team
             </span>
           </div>
         </div>
       </section>
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 space-y-8">
+
+        {/* FTC Affiliate Disclosure */}
+        <AffiliateBanner />
 
         {/* Why people look for alternatives */}
         <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
@@ -355,9 +358,9 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
                   Read full {alt.name} review →
                 </Link>
                 <a
-                  href={alt.affiliateUrl || alt.website}
+                  href={`/api/go/${alt.slug}`}
                   target="_blank"
-                  rel="noopener noreferrer nofollow"
+                  rel="noopener noreferrer nofollow sponsored"
                   className="text-sm font-bold px-4 py-2 rounded-lg no-underline text-white"
                   style={{ backgroundColor: "#1d6ce8" }}
                 >
@@ -385,7 +388,7 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
 
       </main>
 
-      <Footer />
+
     </div>
   );
 }

@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { tools } from "@/data/tools";
 import { comparisons } from "@/data/comparisons";
@@ -45,7 +43,7 @@ export default function ComparePage() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f4f6f9" }}>
-      <Header />
+
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14 text-center">
           <h1 className="text-3xl md:text-4xl font-black text-white mb-3">Compare Any Two Tools</h1>
@@ -129,7 +127,7 @@ export default function ComparePage() {
           </div>
         </div>
       </main>
-      <Footer />
+
     </div>
   );
 }

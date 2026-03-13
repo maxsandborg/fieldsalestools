@@ -1,160 +1,123 @@
-"use client";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <header
-      style={{ backgroundColor: "#0f2340" }}
-      className="sticky top-0 z-50 shadow-lg"
+      style={{
+        background: "#0a1e38",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+      }}
     >
-      {/* Top ad banner */}
       <div
-        className="ad-placeholder w-full"
-        style={{ height: "50px", borderRadius: 0, border: "none", borderBottom: "1px dashed #2a4a6e" }}
+        style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          padding: "0 20px",
+          height: 60,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
       >
-        Advertisement — 728×90
-      </div>
-
-      {/* Main nav */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 no-underline">
-            <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-black text-sm"
-              style={{ backgroundColor: "#1d6ce8" }}
-            >
-              FST
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-white font-bold text-base tracking-tight">
-                FieldSalesTools
-              </span>
-              <span style={{ color: "#64a3d4", fontSize: "10px", letterSpacing: "0.05em" }}>
-                .COM
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            <Link
-              href="/"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#c8dff0" }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#ffffff";
-                (e.target as HTMLElement).style.backgroundColor = "#1a3a5c";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#c8dff0";
-                (e.target as HTMLElement).style.backgroundColor = "transparent";
-              }}
-            >
-              All Tools
-            </Link>
-            <Link
-              href="/compare"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#c8dff0" }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#ffffff";
-                (e.target as HTMLElement).style.backgroundColor = "#1a3a5c";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#c8dff0";
-                (e.target as HTMLElement).style.backgroundColor = "transparent";
-              }}
-            >
-              Compare
-            </Link>
-            <Link
-              href="/industries"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#c8dff0" }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#ffffff";
-                (e.target as HTMLElement).style.backgroundColor = "#1a3a5c";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#c8dff0";
-                (e.target as HTMLElement).style.backgroundColor = "transparent";
-              }}
-            >
-              Industries
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#c8dff0" }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#ffffff";
-                (e.target as HTMLElement).style.backgroundColor = "#1a3a5c";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "#c8dff0";
-                (e.target as HTMLElement).style.backgroundColor = "transparent";
-              }}
-            >
-              About
-            </Link>
-          </nav>
-
-          {/* CTA buttons */}
-          <div className="hidden md:flex items-center gap-2">
-            <Link
-              href="/advertise"
-              className="text-sm font-medium px-3 py-2 rounded-md no-underline"
-              style={{ color: "#f59e0b" }}
-              onMouseEnter={(e) => (e.target as HTMLElement).style.color = "#fbbf24"}
-              onMouseLeave={(e) => (e.target as HTMLElement).style.color = "#f59e0b"}
-            >
-              Advertise
-            </Link>
-            <Link
-              href="/submit"
-              className="text-sm font-semibold px-4 py-2 rounded-lg no-underline text-white"
-              style={{ backgroundColor: "#1d6ce8" }}
-              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = "#1558c5"}
-              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = "#1d6ce8"}
-            >
-              Submit a Tool
-            </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white p-2 rounded-md"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+        {/* Logo */}
+        <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+          <div
+            style={{
+              width: 32,
+              height: 32,
+              background: "linear-gradient(135deg, #1d6ce8, #3b82f6)",
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 16,
+            }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div style={{ backgroundColor: "#1a3a5c", borderTop: "1px solid #2a4a6e" }} className="md:hidden">
-          <div className="px-4 py-3 flex flex-col gap-1">
-            <Link href="/" className="text-white text-sm font-medium py-2 no-underline">All Tools</Link>
-            <Link href="/compare" className="text-white text-sm font-medium py-2 no-underline">Compare</Link>
-            <Link href="/industries" className="text-white text-sm font-medium py-2 no-underline">Industries</Link>
-            <Link href="/about" className="text-white text-sm font-medium py-2 no-underline">About</Link>
-            <Link href="/advertise" className="text-sm font-medium py-2 no-underline" style={{ color: "#f59e0b" }}>Advertise</Link>
-            <Link href="/submit" className="text-sm font-medium py-2 no-underline" style={{ color: "#60a5fa" }}>Submit a Tool</Link>
+            🛠️
           </div>
-        </div>
-      )}
+          <div>
+            <span style={{ color: "#fff", fontWeight: 800, fontSize: 16, letterSpacing: "-0.3px" }}>
+              FieldSalesTools
+            </span>
+            <span style={{ color: "#4f9ef8", fontSize: 14, fontWeight: 400, marginLeft: 1 }}>.com</span>
+          </div>
+        </Link>
+
+        {/* Nav */}
+        <nav style={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Link
+            href="/tools"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 500,
+              padding: "6px 12px",
+              borderRadius: 6,
+            }}
+          >
+            Tools
+          </Link>
+          <Link
+            href="/compare"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 500,
+              padding: "6px 12px",
+              borderRadius: 6,
+            }}
+          >
+            Compare
+          </Link>
+          <Link
+            href="/industries"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 500,
+              padding: "6px 12px",
+              borderRadius: 6,
+            }}
+          >
+            Industries
+          </Link>
+          <Link
+            href="/stacks"
+            style={{
+              color: "#94a3b8",
+              textDecoration: "none",
+              fontSize: 14,
+              fontWeight: 500,
+              padding: "6px 12px",
+              borderRadius: 6,
+            }}
+          >
+            Stacks
+          </Link>
+          <Link
+            href="/advertise"
+            style={{
+              background: "#1d6ce8",
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: 13,
+              fontWeight: 600,
+              padding: "7px 16px",
+              borderRadius: 8,
+              marginLeft: 10,
+              whiteSpace: "nowrap",
+            }}
+          >
+            Get Listed →
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

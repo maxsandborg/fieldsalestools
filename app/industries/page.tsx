@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { industries } from "@/data/industries";
 
@@ -23,7 +21,7 @@ const industryIcons: Record<string, string> = {
 export default function IndustriesPage() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#f4f6f9" }}>
-      <Header />
+
 
       <section style={{ background: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 100%)" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
@@ -68,7 +66,7 @@ export default function IndustriesPage() {
         </div>
       </main>
 
-      <Footer />
+
     </div>
   );
 }
