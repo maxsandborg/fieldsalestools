@@ -20,8 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`,           priority: 0.4, changeFrequency: "yearly"  as const },
     { url: `${baseUrl}/advertise`,       priority: 0.5, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/submit`,          priority: 0.4, changeFrequency: "yearly"  as const },
-    { url: `${baseUrl}/disclaimer`,      priority: 0.3, changeFrequency: "yearly"  as const },
-    { url: `${baseUrl}/privacy`,         priority: 0.3, changeFrequency: "yearly"  as const },
+    // disclaimer + privacy are noindex — intentionally excluded from sitemap
   ].map(({ url, priority, changeFrequency }) => ({
     url,
     lastModified: now,

@@ -20,7 +20,7 @@ export async function generateMetadata({
   if (!page) return {};
   const url = `https://www.fieldsalestools.com/best/${page.slug}`;
   return {
-    title: page.title,
+    title: `${page.title} | FieldSalesTools.com`,
     description: page.metaDescription,
     alternates: { canonical: url },
     openGraph: {

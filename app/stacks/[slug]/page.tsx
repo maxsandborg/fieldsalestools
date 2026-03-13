@@ -18,7 +18,7 @@ export async function generateMetadata({
   if (!stack) return {};
   const url = `https://www.fieldsalestools.com/stacks/${stack.slug}`;
   return {
-    title: stack.title,
+    title: `${stack.title} | FieldSalesTools.com`,
     description: stack.metaDescription,
     alternates: {
       canonical: url,

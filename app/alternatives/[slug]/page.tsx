@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `Best ${tool.name} Alternatives (2026) — Honest Comparison | FieldSalesTools.com`,
     description: `Looking for ${tool.name} alternatives? We compared the top options on pricing, features, and real user ratings. Find the best replacement for your field sales team.`,
-    alternates: { canonical: `https://www.fieldsalestools.com/alternatives/${slug}-alternatives` },
+    alternates: { canonical: `https://www.fieldsalestools.com/alternatives/${slug}` },
   };
 }
 

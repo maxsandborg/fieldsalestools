@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: ind.metaTitle,
     description: ind.metaDescription,
+    alternates: { canonical: `https://www.fieldsalestools.com/industries/${slug}` },
   };
 }
 
