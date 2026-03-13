@@ -1,7 +1,21 @@
 
 export const metadata = {
   title: "Advertise With Us | FieldSalesTools.com",
-  description: "Reach thousands of field sales professionals and D2D sales managers. Featured placements, sponsored listings, and display advertising on FieldSalesTools.com.",
+  description: "Reach thousands of field sales professionals and D2D sales managers. Featured placements and sponsored listings.",
+  openGraph: {
+    title: "Advertise With Us | FieldSalesTools.com",
+    description: "Reach thousands of field sales professionals and D2D sales managers. Featured placements and sponsored listings.",
+    url: "https://www.fieldsalestools.com/advertise",
+    siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Advertise With Us | FieldSalesTools.com",
+    description: "Reach thousands of field sales professionals and D2D sales managers.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
+  },
 };
 
 export default function AdvertisePage() {

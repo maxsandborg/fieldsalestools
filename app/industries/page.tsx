@@ -4,7 +4,21 @@ import { industries } from "@/data/industries";
 export const metadata = {
   title: "Field Sales Software by Industry | FieldSalesTools.com",
   description:
-    "Find the best field sales and D2D software for your industry. Solar, roofing, telecom, pest control, HVAC, home services, and more.",
+    "Find the best field sales and D2D software for your industry. Solar, roofing, telecom, pest control, HVAC, and more.",
+  openGraph: {
+    title: "Field Sales Software by Industry | FieldSalesTools.com",
+    description: "Find the best field sales and D2D software for your industry. Solar, roofing, telecom, pest control, HVAC, and more.",
+    url: "https://www.fieldsalestools.com/industries",
+    siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Field Sales Software by Industry | FieldSalesTools.com",
+    description: "Find the best field sales and D2D software for your industry.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
+  },
 };
 
 const industryIcons: Record<string, string> = {

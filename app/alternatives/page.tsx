@@ -3,22 +3,24 @@ import { tools } from "@/data/tools";
 import { reviewedSlugs } from "@/data/reviews";
 
 export const metadata = {
-  title: "Field Sales Software Alternatives — Compare Options | FieldSalesTools.com",
+  title: "Field Sales Software Alternatives | FieldSalesTools.com",
   description:
-    "Looking for alternatives to SPOTIO, SalesRabbit, or other field sales tools? Honest comparisons with pricing, features, and real user ratings.",
+    "Alternatives to SPOTIO, SalesRabbit, and other field sales tools. Compare pricing, features, and real user ratings.",
   openGraph: {
-    title: "Field Sales Software Alternatives — Compare Options",
+    title: "Field Sales Software Alternatives | FieldSalesTools.com",
     description:
-      "Looking for alternatives to SPOTIO, SalesRabbit, or other field sales tools? Honest comparisons with pricing, features, and real user ratings.",
+      "Alternatives to SPOTIO, SalesRabbit, and other field sales tools. Compare pricing, features, and ratings.",
     url: "https://www.fieldsalestools.com/alternatives",
     siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Field Sales Software Alternatives — Compare Options",
+    title: "Field Sales Software Alternatives | FieldSalesTools.com",
     description:
-      "Looking for alternatives to SPOTIO, SalesRabbit, or other field sales tools? Honest comparisons.",
+      "Alternatives to SPOTIO, SalesRabbit, and other field sales tools. Compare pricing and ratings.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
   },
   alternates: {
     canonical: "https://www.fieldsalestools.com/alternatives",

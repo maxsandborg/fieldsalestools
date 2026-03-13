@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     (() => { const p = parseSlugs(slug); return p ? `${p[1]}-vs-${p[0]}` : ""; })()
   );
   if (c) {
-    const pageTitle = c.title + " | FieldSalesTools.com";
+    // Use only the "X vs Y (2026)" part for the title tag, dropping any subtitle after ":"
+    const shortTitle = c.title.includes(":") ? c.title.split(":")[0].trim() : c.title;
+    const pageTitle = shortTitle + " | FieldSalesTools.com";
     return {
       title: pageTitle,
       description: c.metaDescription,

@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return { title: "Alternatives Not Found" };
-  const altTitle = `Best ${tool.name} Alternatives (2026) — Honest Comparison | FieldSalesTools.com`;
-  const altDesc = `Looking for ${tool.name} alternatives? We compared the top options on pricing, features, and real user ratings. Find the best replacement for your field sales team.`;
+  const altTitle = `Best ${tool.name} Alternatives (2026) | FieldSalesTools.com`;
+  const altDesc = `Top ${tool.name} alternatives compared on pricing, features, and real user ratings. Find the best fit for your team.`;
   return {
     title: altTitle,
     description: altDesc,

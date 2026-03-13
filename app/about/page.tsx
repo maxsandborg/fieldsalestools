@@ -2,9 +2,23 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About FieldSalesTools.com | Built by a Field Sales Manager Who Lived It",
+  title: "About Us | FieldSalesTools.com",
   description:
-    "FieldSalesTools.com was built by Max Sandborg — a field sales manager who led D2D fiber sales teams across the US. Real-world tool reviews from someone who's actually managed reps in the field.",
+    "Built by Max Sandborg, a field sales manager who led D2D fiber teams across the US. Real-world reviews from the field.",
+  openGraph: {
+    title: "About Us | FieldSalesTools.com",
+    description: "Built by Max Sandborg, a field sales manager who led D2D fiber teams across the US.",
+    url: "https://www.fieldsalestools.com/about",
+    siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | FieldSalesTools.com",
+    description: "Built by Max Sandborg, a field sales manager who led D2D fiber teams across the US.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
+  },
 };
 
 export default function AboutPage() {

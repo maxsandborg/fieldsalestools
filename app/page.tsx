@@ -8,19 +8,27 @@ import ToolLogo from "@/components/ToolLogo";
 import EmailCapture from "@/components/EmailCapture";
 
 export const metadata: Metadata = {
-  title: "Best Field Sales Software 2026 — Reviews, Comparisons & Pricing | FieldSalesTools.com",
+  title: "Best Field Sales Software 2026 | FieldSalesTools.com",
   description:
-    "Independent reviews of 20+ field sales, D2D, and canvassing software tools. Compare pricing, features, and editor scores — find the right software for your team.",
+    "Reviews of 20+ field sales, D2D, and canvassing tools. Compare pricing, features, and editor scores to find the right fit.",
   alternates: {
     canonical: "https://www.fieldsalestools.com",
   },
   openGraph: {
-    title: "Best Field Sales Software 2026 — Reviews & Comparisons",
+    title: "Best Field Sales Software 2026 | FieldSalesTools.com",
     description:
-      "Independent reviews of 20+ field sales tools. Compare SPOTIO, SalesRabbit, Badger Maps, and more. Real pricing, editor scores, and side-by-side comparisons.",
+      "Reviews of 20+ field sales tools. Compare SPOTIO, SalesRabbit, Badger Maps, and more with real pricing and editor scores.",
     type: "website",
     url: "https://www.fieldsalestools.com",
     siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Best Field Sales Software 2026 | FieldSalesTools.com",
+    description:
+      "Reviews of 20+ field sales tools. Compare SPOTIO, SalesRabbit, Badger Maps, and more.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
   },
 };
 

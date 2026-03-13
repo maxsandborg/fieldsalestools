@@ -6,11 +6,11 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fieldsalestools.com"),
   title: {
-    default: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
+    default: "Field Sales Software Reviews & Comparisons | FieldSalesTools.com",
     template: "%s",
   },
   description:
-    "Independent reviews of 20+ field sales, D2D, and canvassing software tools. Compare pricing, features, and editor scores — find the right software for your team.",
+    "Independent reviews of 20+ field sales, D2D, and canvassing tools. Compare pricing, features, and editor scores for your team.",
   keywords: [
     "field sales software stack",
     "field sales tech stack",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "FieldSalesTools.com",
-    title: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
+    title: "Field Sales Software Reviews & Comparisons | FieldSalesTools.com",
     description:
-      "Discover the best software stack for your field sales team. Curated tool combinations by industry and team size — with real pricing and honest reviews.",
+      "Discover the best software stack for your field sales team. Curated tool combinations by industry and team size.",
     images: [
       {
         url: "https://www.fieldsalestools.com/og-image.png",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FieldSalesTools.com — Field Sales Software Reviews & Comparisons",
+    title: "Field Sales Software Reviews & Comparisons | FieldSalesTools.com",
     description:
       "Discover the best software stack for your field sales team. Curated tool combinations by industry and team size.",
     images: ["https://www.fieldsalestools.com/og-image.png"],

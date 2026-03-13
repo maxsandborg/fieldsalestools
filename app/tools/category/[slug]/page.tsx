@@ -114,11 +114,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cat) return {};
   const pageUrl = `https://www.fieldsalestools.com/tools/category/${cat.slug}`;
   return {
-    title: `${cat.title} 2026 — Reviews & Pricing | FieldSalesTools.com`,
+    title: `${cat.title} (2026) | FieldSalesTools.com`,
     description: cat.description,
     alternates: { canonical: pageUrl },
     openGraph: {
-      title: `${cat.title} 2026 — Reviews & Pricing`,
+      title: `${cat.title} (2026) | FieldSalesTools.com`,
       description: cat.description,
       url: pageUrl,
       siteName: "FieldSalesTools.com",

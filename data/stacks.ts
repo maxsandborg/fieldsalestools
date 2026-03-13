@@ -45,7 +45,7 @@ export const stacks: Stack[] = [
     title: "Roofing Tech Stack (2026)",
     headline: "The Roofing Sales Tech Stack That Top Companies Actually Use",
     metaDescription:
-      "The complete roofing sales tech stack for 2026. Which field sales tools do successful roofing companies use, how much does it cost, and why this combination works.",
+      "The complete roofing sales tech stack for 2026. Tools successful roofing companies use, costs, and why this combination works for D2D teams.",
     icon: "🏠",
     heroGradient: "linear-gradient(135deg, #0f2340 0%, #1e3a5f 50%, #1d4ed8 100%)",
     totalCostLow: "$39",
@@ -156,7 +156,7 @@ export const stacks: Stack[] = [
     title: "Solar Sales Tech Stack (2026)",
     headline: "The Solar Sales Tech Stack That Closes More Doors in 2026",
     metaDescription:
-      "The complete solar sales tech stack for 2026. What tools do top solar companies use for D2D canvassing, lead management, and closing — and what it costs per rep.",
+      "Complete solar sales tech stack for 2026. Tools top solar companies use for D2D canvassing, lead management, and closing — with real pricing.",
     icon: "⚡",
     heroGradient: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 50%, #d97706 100%)",
     totalCostLow: "$39",
@@ -419,7 +419,7 @@ export const stacks: Stack[] = [
     slug: "telecom-fiber",
     category: "industry",
     industry: "Telecom & Fiber",
-    title: "Telecom & Fiber Sales Tech Stack (2026)",
+    title: "Telecom & Fiber Sales Stack (2026)",
     headline: "The Telecom & Fiber D2D Sales Stack for 2026",
     metaDescription:
       "The complete tech stack for telecom and fiber D2D sales teams in 2026. Tools used by top ISP and fiber sales organizations, pricing, and honest recommendations.",
@@ -503,7 +503,7 @@ export const stacks: Stack[] = [
     title: "Medical Device Sales Tech Stack (2026)",
     headline: "The Medical Device Sales Rep Tech Stack for 2026",
     metaDescription:
-      "The best field sales tech stack for medical device reps in 2026. Route optimization, CRM integration, visit tracking, and honest pricing for med device sales teams.",
+      "Best field sales tech stack for medical device reps. Route optimization, CRM integration, visit tracking, and pricing for med device teams.",
     icon: "🏥",
     heroGradient: "linear-gradient(135deg, #0f2340 0%, #1a3a5c 50%, #10b981 100%)",
     totalCostLow: "$49",
@@ -581,7 +581,7 @@ export const stacks: Stack[] = [
     slug: "distribution",
     category: "industry",
     industry: "Distribution",
-    title: "Distribution & Wholesale Sales Tech Stack (2026)",
+    title: "Distribution & Wholesale Stack (2026)",
     headline: "The Field Sales Tech Stack for Distribution & Wholesale Teams",
     metaDescription:
       "The best field sales tech stack for distribution and wholesale companies in 2026. Route optimization, order capture, visit tracking, and CRM tools reviewed.",
@@ -683,7 +683,7 @@ export const stacks: Stack[] = [
     slug: "food-beverage",
     category: "industry",
     industry: "Food & Beverage",
-    title: "Food & Beverage Field Sales Tech Stack (2026)",
+    title: "Food & Beverage Sales Stack (2026)",
     headline: "The F&B Field Sales Stack for Account Reps in 2026",
     metaDescription:
       "The best field sales tech stack for food and beverage companies in 2026. Route planning, retail execution, order capture, and account management tools reviewed.",
@@ -787,7 +787,7 @@ export const stacks: Stack[] = [
     slug: "solo-rep",
     category: "team-size",
     teamSize: "Solo rep",
-    title: "Best Field Sales Tools for Solo Reps (2026)",
+    title: "Best Tools for Solo Reps (2026)",
     headline: "The Best Field Sales Stack for Solo Reps in 2026",
     metaDescription:
       "The best field sales tools for solo reps in 2026. Low-cost, high-value tools for individual outside sales reps — with honest pricing and no fluff.",
@@ -868,7 +868,7 @@ export const stacks: Stack[] = [
     slug: "smb-team",
     category: "team-size",
     teamSize: "SMB (2–20 reps)",
-    title: "Best Field Sales Stack for Small Teams (2–20 Reps)",
+    title: "Stack for Small Teams (2–20 Reps)",
     headline: "The Best Field Sales Tech Stack for Small Teams in 2026",
     metaDescription:
       "The best field sales tools for small teams of 2–20 reps in 2026. Affordable, effective tools that don't require an IT department or enterprise budget.",
@@ -949,7 +949,7 @@ export const stacks: Stack[] = [
     slug: "mid-market-team",
     category: "team-size",
     teamSize: "Mid-market (20–100 reps)",
-    title: "Best Field Sales Stack for Mid-Market Teams (20–100 Reps)",
+    title: "Stack for Mid-Market Teams (20–100)",
     headline: "The Field Sales Tech Stack for Mid-Market Teams (20–100 Reps)",
     metaDescription:
       "The best field sales tech stack for mid-market teams of 20–100 reps in 2026. Analytics, territory management, CRM integration, and honest pricing.",
@@ -1032,10 +1032,10 @@ export const stacks: Stack[] = [
     slug: "solar-enterprise",
     category: "industry",
     industry: "Solar",
-    title: "Enterprise Solar Sales Tech Stack (2026)",
+    title: "Enterprise Solar Sales Stack (2026)",
     headline: "The Enterprise Solar Sales Stack Used by 100+ Rep Solar Organizations",
     metaDescription:
-      "The complete enterprise solar sales tech stack for 2026. Which field sales tools do high-volume solar companies use, what does it cost at scale, and why this combination works for large solar operations.",
+      "Enterprise solar sales tech stack for 2026. Field sales tools high-volume solar companies use, costs at scale, and why this combination works.",
     icon: "☀️",
     heroGradient: "linear-gradient(135deg, #451a03 0%, #78350f 50%, #f59e0b 100%)",
     totalCostLow: "$64",
@@ -1136,7 +1136,7 @@ export const stacks: Stack[] = [
     title: "Mid-Market Roofing Sales Stack (2026)",
     headline: "The Roofing Sales Stack for 10–50 Rep Teams: Better Than One-Size-Fits-All",
     metaDescription:
-      "The best field sales tech stack for mid-market roofing companies with 10–50 reps. Tools, pricing, and strategy for the growth stage between startup and enterprise.",
+      "Best field sales tech stack for mid-market roofing (10–50 reps). Tools, pricing, and strategy for growth-stage roofing companies.",
     icon: "🏠",
     heroGradient: "linear-gradient(135deg, #1c1917 0%, #44403c 50%, #78716c 100%)",
     totalCostLow: "$39",
@@ -1215,7 +1215,7 @@ export const stacks: Stack[] = [
     title: "SMB Telecom & Fiber Sales Stack (2026)",
     headline: "The Right D2D Sales Stack for SMB Telecom and Fiber Companies",
     metaDescription:
-      "The best field sales tech stack for SMB telecom and fiber companies running D2D campaigns in 2026. Tools, pricing, and integration strategy for ISPs and fiber providers.",
+      "Best field sales stack for SMB telecom and fiber companies. Tools, pricing, and integration strategy for ISPs running D2D campaigns.",
     icon: "📡",
     heroGradient: "linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #38bdf8 100%)",
     totalCostLow: "$20",
@@ -1292,10 +1292,10 @@ export const stacks: Stack[] = [
     slug: "home-security-smb",
     category: "industry",
     industry: "Home Security",
-    title: "Home Security D2D Sales Stack for SMB Teams (2026)",
+    title: "Security Stack for SMB (2026)",
     headline: "The Home Security D2D Sales Stack That Works for Small and Mid-Market Teams",
     metaDescription:
-      "The best D2D sales tech stack for home security companies in 2026. Tools, pricing, and workflow strategy for SMB home security operations running door-to-door campaigns.",
+      "Best D2D sales stack for home security companies. Tools, pricing, and workflow strategy for SMB home security D2D campaigns.",
     icon: "🔐",
     heroGradient: "linear-gradient(135deg, #1e1b4b 0%, #3730a3 50%, #6366f1 100%)",
     totalCostLow: "$39",
@@ -1372,10 +1372,10 @@ export const stacks: Stack[] = [
     slug: "pest-control-growth",
     category: "industry",
     industry: "Pest Control",
-    title: "Pest Control D2D Sales Stack for Growing Teams (2026)",
+    title: "Pest Control Growth Stack (2026)",
     headline: "The D2D Sales Stack That Powers High-Performance Pest Control Summer Campaigns",
     metaDescription:
-      "The best D2D tech stack for pest control companies running summer canvassing campaigns in 2026. Tools, pricing, and strategy for operations scaling from 10 to 50 reps.",
+      "Best D2D tech stack for pest control running summer campaigns. Tools, pricing, and strategy for operations scaling 10 to 50 reps.",
     icon: "🦟",
     heroGradient: "linear-gradient(135deg, #14532d 0%, #166534 50%, #22c55e 100%)",
     totalCostLow: "$20",

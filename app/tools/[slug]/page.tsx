@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return {};
-  const toolTitle = `${tool.name} Review 2026 — Pricing, Features & Alternatives | FieldSalesTools.com`;
-  const toolDesc = `Honest ${tool.name} review: features, pricing, pros and cons. Is ${tool.name} right for your field sales team? Compare with top alternatives.`;
+  const toolTitle = `${tool.name} Review (2026) | FieldSalesTools.com`;
+  const toolDesc = `${tool.name} review: pricing, features, pros & cons. Is it right for your field sales team? Compare alternatives.`;
   return {
     title: toolTitle,
     description: toolDesc,

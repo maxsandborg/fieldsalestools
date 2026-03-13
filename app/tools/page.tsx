@@ -5,10 +5,24 @@ import ToolLogo from "@/components/ToolLogo";
 import EmailCapture from "@/components/EmailCapture";
 
 export const metadata = {
-  title: "Best Field Sales Software 2026 — 20+ Tools Reviewed | FieldSalesTools.com",
+  title: "20+ Field Sales Tools Reviewed (2026) | FieldSalesTools.com",
   description:
-    "Independent reviews of every major field sales, D2D, and canvassing software tool. Compare pricing, features, and see which tools fit your team size and vertical.",
+    "Independent reviews of every major field sales, D2D, and canvassing tool. Compare pricing, features, and find the right fit.",
   alternates: { canonical: "https://www.fieldsalestools.com/tools" },
+  openGraph: {
+    title: "20+ Field Sales Tools Reviewed (2026) | FieldSalesTools.com",
+    description: "Independent reviews of every major field sales, D2D, and canvassing tool. Compare pricing and features.",
+    url: "https://www.fieldsalestools.com/tools",
+    siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "20+ Field Sales Tools Reviewed (2026) | FieldSalesTools.com",
+    description: "Independent reviews of every major field sales, D2D, and canvassing tool.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
+  },
 };
 
 const CATEGORIES = [

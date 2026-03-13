@@ -3,22 +3,24 @@ import { bestForPages } from "@/data/best-for";
 import { tools } from "@/data/tools";
 
 export const metadata = {
-  title: "Best Field Sales Software — Buyer's Guides by Use Case | FieldSalesTools.com",
+  title: "Best Field Sales Software Guides | FieldSalesTools.com",
   description:
-    "Find the best field sales software for your specific use case. Solar, roofing, D2D, canvassing, small teams, enterprise — ranked and reviewed for 2026.",
+    "Find the best field sales software for your use case. Solar, roofing, D2D, canvassing, small teams, enterprise — ranked for 2026.",
   openGraph: {
-    title: "Best Field Sales Software — Buyer's Guides by Use Case",
+    title: "Best Field Sales Software Guides | FieldSalesTools.com",
     description:
-      "Find the best field sales software for your specific use case. Ranked and reviewed for 2026.",
+      "Find the best field sales software for your use case. Ranked and reviewed for 2026.",
     url: "https://www.fieldsalestools.com/best",
     siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Field Sales Software — Buyer's Guides by Use Case",
+    title: "Best Field Sales Software Guides | FieldSalesTools.com",
     description:
-      "Find the best field sales software for your specific use case. Ranked and reviewed for 2026.",
+      "Find the best field sales software for your use case. Ranked and reviewed for 2026.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
   },
   alternates: {
     canonical: "https://www.fieldsalestools.com/best",

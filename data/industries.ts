@@ -17,7 +17,7 @@ export const industries: IndustryData[] = [
     slug: "solar",
     name: "Solar",
     industryKey: "Solar",
-    metaTitle: "Best Field Sales Software for Solar Companies | FieldSalesTools.com",
+    metaTitle: "Best Solar Field Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best field sales and D2D software for solar companies. SPOTIO, SalesRabbit, Knockbase, and more — honest reviews, real pricing.",
     heroHeading: "Best Field Sales Software for Solar",
@@ -61,7 +61,7 @@ export const industries: IndustryData[] = [
     slug: "roofing",
     name: "Roofing",
     industryKey: "Roofing & Storm Restoration",
-    metaTitle: "Best Field Sales Software for Roofing Companies | FieldSalesTools.com",
+    metaTitle: "Best Roofing Field Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D and field sales software for roofing and storm restoration companies. SalesRabbit, SPOTIO, Knockbase, and more.",
     heroHeading: "Best Field Sales Software for Roofing",
@@ -100,7 +100,7 @@ export const industries: IndustryData[] = [
     slug: "telecom",
     name: "Telecom",
     industryKey: "Telecom",
-    metaTitle: "Best Field Sales Software for Telecom & Fiber Sales | FieldSalesTools.com",
+    metaTitle: "Best Telecom & Fiber Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D and field sales software for telecom and fiber internet sales. SPOTIO, SalesRabbit, Knockbase, and more.",
     heroHeading: "Best Field Sales Software for Telecom & Fiber",
@@ -139,7 +139,7 @@ export const industries: IndustryData[] = [
     slug: "fiber-cable-isp",
     name: "Fiber / Cable / ISP",
     industryKey: "Fiber / Cable / ISP",
-    metaTitle: "Best Field Sales Software for Fiber & ISP Sales | FieldSalesTools.com",
+    metaTitle: "Best Fiber & ISP Field Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D canvassing and field sales tools for fiber internet, cable, and ISP companies. SPOTIO, SalesRabbit, Knockbase, and more.",
     heroHeading: "Best Field Sales Software for Fiber & ISP",
@@ -173,7 +173,7 @@ export const industries: IndustryData[] = [
     slug: "pest-control",
     name: "Pest Control",
     industryKey: "Pest Control",
-    metaTitle: "Best Field Sales Software for Pest Control Companies | FieldSalesTools.com",
+    metaTitle: "Best Pest Control Field Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D and field sales software for pest control companies. SPOTIO, SalesRabbit, Knockbase, and more — honest reviews and pricing.",
     heroHeading: "Best Field Sales Software for Pest Control",
@@ -207,7 +207,7 @@ export const industries: IndustryData[] = [
     slug: "hvac",
     name: "HVAC",
     industryKey: "HVAC",
-    metaTitle: "Best Field Sales Software for HVAC Companies | FieldSalesTools.com",
+    metaTitle: "Best HVAC Field Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best field sales and D2D software for HVAC companies. SPOTIO, SalesRabbit, Badger Maps, and more — honest reviews and pricing.",
     heroHeading: "Best Field Sales Software for HVAC",
@@ -241,7 +241,7 @@ export const industries: IndustryData[] = [
     slug: "home-services",
     name: "Home Services",
     industryKey: "Home Services",
-    metaTitle: "Best Field Sales Software for Home Services Companies | FieldSalesTools.com",
+    metaTitle: "Best Home Services Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D and field sales software for home services companies. SPOTIO, SalesRabbit, Knockbase, and more.",
     heroHeading: "Best Field Sales Software for Home Services",
@@ -275,7 +275,7 @@ export const industries: IndustryData[] = [
     slug: "home-security",
     name: "Home Security",
     industryKey: "Home Security & Alarm",
-    metaTitle: "Best Field Sales Software for Home Security Companies | FieldSalesTools.com",
+    metaTitle: "Best Home Security Sales Software | FieldSalesTools.com",
     metaDescription:
       "Compare the best D2D and field sales software for home security and alarm companies. SPOTIO, SalesRabbit, and more.",
     heroHeading: "Best Field Sales Software for Home Security",

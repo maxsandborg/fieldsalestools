@@ -2,22 +2,24 @@ import Link from "next/link";
 import { stacks } from "@/data/stacks";
 
 export const metadata = {
-  title: "Field Sales Tech Stacks — Industry & Team Size Guides | FieldSalesTools.com",
+  title: "Field Sales Tech Stacks (2026) | FieldSalesTools.com",
   description:
-    "Complete field sales tech stack guides for every industry and team size. See which tool combinations top-performing D2D teams actually use, with real pricing.",
+    "Field sales tech stack guides by industry and team size. See which tools top D2D teams actually use, with real pricing.",
   openGraph: {
-    title: "Field Sales Tech Stacks — Industry & Team Size Guides",
+    title: "Field Sales Tech Stacks (2026) | FieldSalesTools.com",
     description:
-      "Complete field sales tech stack guides for every industry and team size. See which tool combinations top-performing D2D teams actually use.",
+      "Field sales tech stack guides by industry and team size. See which tools top D2D teams use.",
     url: "https://www.fieldsalestools.com/stacks",
     siteName: "FieldSalesTools.com",
+    images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Field Sales Tech Stacks — Industry & Team Size Guides",
+    title: "Field Sales Tech Stacks (2026) | FieldSalesTools.com",
     description:
-      "Complete field sales tech stack guides for every industry and team size.",
+      "Field sales tech stack guides by industry and team size.",
+    images: ["https://www.fieldsalestools.com/og-image.png"],
   },
   alternates: {
     canonical: "https://www.fieldsalestools.com/stacks",
