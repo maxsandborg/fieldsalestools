@@ -17,6 +17,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: ind.metaTitle,
     description: ind.metaDescription,
     alternates: { canonical: `https://www.fieldsalestools.com/industries/${slug}` },
+    openGraph: {
+      title: ind.metaTitle,
+      description: ind.metaDescription,
+      url: `https://www.fieldsalestools.com/industries/${slug}`,
+      siteName: "FieldSalesTools.com",
+      images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ind.metaTitle,
+      description: ind.metaDescription,
+      images: ["https://www.fieldsalestools.com/og-image.png"],
+    },
   };
 }
 

@@ -25,7 +25,28 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const c = getComparison(slug) ?? getComparison(
     (() => { const p = parseSlugs(slug); return p ? `${p[1]}-vs-${p[0]}` : ""; })()
   );
-  if (c) return { title: c.title + " | FieldSalesTools.com", description: c.metaDescription, alternates: { canonical: `https://www.fieldsalestools.com/compare/${slug}` } };
+  if (c) {
+    const pageTitle = c.title + " | FieldSalesTools.com";
+    return {
+      title: pageTitle,
+      description: c.metaDescription,
+      alternates: { canonical: `https://www.fieldsalestools.com/compare/${slug}` },
+      openGraph: {
+        title: pageTitle,
+        description: c.metaDescription,
+        url: `https://www.fieldsalestools.com/compare/${slug}`,
+        siteName: "FieldSalesTools.com",
+        images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: pageTitle,
+        description: c.metaDescription,
+        images: ["https://www.fieldsalestools.com/og-image.png"],
+      },
+    };
+  }
 
   const parsed = parseSlugs(slug);
   if (!parsed) return { title: "Comparison Not Found" };
@@ -33,10 +54,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const t1 = getToolBySlug(s1);
   const t2 = getToolBySlug(s2);
   if (!t1 || !t2) return { title: "Comparison Not Found" };
+  const autoTitle = `${t1.name} vs ${t2.name} (${new Date().getFullYear()}) | FieldSalesTools.com`;
+  const autoDesc = `${t1.name} vs ${t2.name} — compare pricing, features, ratings, and use cases for field sales teams.`;
   return {
-    title: `${t1.name} vs ${t2.name} (${new Date().getFullYear()}) | FieldSalesTools.com`,
-    description: `${t1.name} vs ${t2.name} — compare pricing, features, ratings, and use cases for field sales teams.`,
+    title: autoTitle,
+    description: autoDesc,
     alternates: { canonical: `https://www.fieldsalestools.com/compare/${slug}` },
+    openGraph: {
+      title: autoTitle,
+      description: autoDesc,
+      url: `https://www.fieldsalestools.com/compare/${slug}`,
+      siteName: "FieldSalesTools.com",
+      images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: autoTitle,
+      description: autoDesc,
+      images: ["https://www.fieldsalestools.com/og-image.png"],
+    },
   };
 }
 

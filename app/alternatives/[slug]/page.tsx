@@ -13,10 +13,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return { title: "Alternatives Not Found" };
+  const altTitle = `Best ${tool.name} Alternatives (2026) — Honest Comparison | FieldSalesTools.com`;
+  const altDesc = `Looking for ${tool.name} alternatives? We compared the top options on pricing, features, and real user ratings. Find the best replacement for your field sales team.`;
   return {
-    title: `Best ${tool.name} Alternatives (2026) — Honest Comparison | FieldSalesTools.com`,
-    description: `Looking for ${tool.name} alternatives? We compared the top options on pricing, features, and real user ratings. Find the best replacement for your field sales team.`,
+    title: altTitle,
+    description: altDesc,
     alternates: { canonical: `https://www.fieldsalestools.com/alternatives/${slug}` },
+    openGraph: {
+      title: altTitle,
+      description: altDesc,
+      url: `https://www.fieldsalestools.com/alternatives/${slug}`,
+      siteName: "FieldSalesTools.com",
+      images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: altTitle,
+      description: altDesc,
+      images: ["https://www.fieldsalestools.com/og-image.png"],
+    },
   };
 }
 

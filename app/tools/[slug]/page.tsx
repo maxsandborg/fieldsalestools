@@ -16,10 +16,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return {};
+  const toolTitle = `${tool.name} Review 2026 — Pricing, Features & Alternatives | FieldSalesTools.com`;
+  const toolDesc = `Honest ${tool.name} review: features, pricing, pros and cons. Is ${tool.name} right for your field sales team? Compare with top alternatives.`;
   return {
-    title: `${tool.name} Review 2026 — Pricing, Features & Alternatives | FieldSalesTools.com`,
-    description: `Honest ${tool.name} review: features, pricing, pros and cons. Is ${tool.name} right for your field sales team? Compare with top alternatives.`,
+    title: toolTitle,
+    description: toolDesc,
     alternates: { canonical: `https://www.fieldsalestools.com/tools/${tool.slug}` },
+    openGraph: {
+      title: toolTitle,
+      description: toolDesc,
+      url: `https://www.fieldsalestools.com/tools/${tool.slug}`,
+      siteName: "FieldSalesTools.com",
+      images: [{ url: "https://www.fieldsalestools.com/og-image.png", width: 1200, height: 630 }],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: toolTitle,
+      description: toolDesc,
+      images: ["https://www.fieldsalestools.com/og-image.png"],
+    },
   };
 }
 
