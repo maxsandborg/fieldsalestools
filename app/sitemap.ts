@@ -17,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/stacks`,          priority: 0.9, changeFrequency: "weekly"  as const },
     { url: `${baseUrl}/compare`,         priority: 0.9, changeFrequency: "weekly"  as const },
     { url: `${baseUrl}/industries`,      priority: 0.8, changeFrequency: "monthly" as const },
+    { url: `${baseUrl}/alternatives`,   priority: 0.85, changeFrequency: "weekly" as const },
+    { url: `${baseUrl}/best`,           priority: 0.9, changeFrequency: "weekly"  as const },
     { url: `${baseUrl}/about`,           priority: 0.4, changeFrequency: "yearly"  as const },
     { url: `${baseUrl}/advertise`,       priority: 0.5, changeFrequency: "monthly" as const },
     { url: `${baseUrl}/submit`,          priority: 0.4, changeFrequency: "yearly"  as const },
@@ -62,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── Alternatives pages ────────────────────────────────────────────────────────
   const alternativeUrls = reviewedSlugs.map((slug) => ({
-    url: `${baseUrl}/alternatives/${slug}-alternatives`,
+    url: `${baseUrl}/alternatives/${slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.75,

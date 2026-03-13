@@ -48,8 +48,8 @@ export default function Footer() {
                 { href: "/tools/badger-maps", label: "Badger Maps" },
                 { href: "/tools/knockio", label: "Knockio" },
                 { href: "/compare", label: "Compare Tools" },
-                { href: "/alternatives/spotio-alternatives", label: "SPOTIO Alternatives" },
-                { href: "/alternatives/salesrabbit-alternatives", label: "SalesRabbit Alternatives" },
+                { href: "/alternatives/spotio", label: "SPOTIO Alternatives" },
+                { href: "/alternatives/salesrabbit", label: "SalesRabbit Alternatives" },
               ].map((link) => (
                 <Link
                   key={link.href}

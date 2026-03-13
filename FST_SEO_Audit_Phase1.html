@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FieldSalesTools.com — SEO Audit Phase 1: Global Site Structure</title>
+<style>
+  :root { --bg: #F8FAFC; --card: #FFFFFF; --border: #E2E8F0; --text: #0F172A; --muted: #64748B; --blue: #2563EB; --red: #DC2626; --amber: #D97706; --green: #16A34A; --purple: #7C3AED; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1E293B, #334155); padding: 2rem; color: white; }
+  .header h1 { font-size: 1.5rem; font-weight: 800; }
+  .header p { opacity: 0.8; font-size: 0.85rem; margin-top: 0.25rem; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+  .badge { display: inline-flex; align-items: center; padding: 0.15rem 0.5rem; border-radius: 100px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-high { background: rgba(220,38,38,0.1); color: var(--red); }
+  .badge-med { background: rgba(217,119,6,0.1); color: var(--amber); }
+  .badge-low { background: rgba(22,163,74,0.1); color: var(--green); }
+  .badge-info { background: rgba(37,99,235,0.1); color: var(--blue); }
+  .section { margin-bottom: 2rem; }
+  .section-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+  .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .card p, .card li { font-size: 0.82rem; color: #334155; }
+  .card ul { padding-left: 1.25rem; margin-top: 0.25rem; }
+  .card li { margin-bottom: 0.3rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 0.5rem; }
+  th { text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); padding: 0.5rem 0.6rem; border-bottom: 2px solid var(--border); }
+  td { padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .url { font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.72rem; color: var(--blue); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 1rem; }
+  .metric { text-align: center; padding: 1rem; }
+  .metric .value { font-size: 2rem; font-weight: 800; }
+  .metric .label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+  .highlight { background: #FFFBEB; border-left: 3px solid var(--amber); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; font-size: 0.82rem; }
+  .critical { background: #FEF2F2; border-left: 3px solid var(--red); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; font-size: 0.82rem; }
+  .good { background: #F0FDF4; border-left: 3px solid var(--green); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 0.75rem 0; font-size: 0.82rem; }
+  code { background: #F1F5F9; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.75rem; font-family: 'SF Mono', 'Consolas', monospace; }
+  .tree { font-family: 'SF Mono', monospace; font-size: 0.75rem; line-height: 1.8; white-space: pre; background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; }
+  .phase-badge { background: var(--blue); color: white; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <h1>FieldSalesTools.com — Enterprise SEO Audit</h1>
+        <p>Phase 1 of 8: Global Site Structure Analysis — March 13, 2026</p>
+      </div>
+      <span class="phase-badge">PHASE 1 / 8</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW METRICS -->
+  <div class="section">
+    <div class="section-title">Site Inventory</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;">
+      <div class="card metric"><div class="value" style="color:var(--blue);">140</div><div class="label">Sitemap URLs</div></div>
+      <div class="card metric"><div class="value" style="color:var(--purple);">20</div><div class="label">Tool Pages</div></div>
+      <div class="card metric"><div class="value" style="color:var(--green);">60</div><div class="label">Comparisons</div></div>
+      <div class="card metric"><div class="value" style="color:var(--amber);">20</div><div class="label">Alternatives</div></div>
+      <div class="card metric"><div class="value" style="color:var(--red);">21+</div><div class="label">404 Pages Found</div></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: CURRENT ARCHITECTURE -->
+  <div class="section">
+    <div class="section-title">Section 1 — Current Architecture Map</div>
+
+    <div class="card">
+      <h3>URL Architecture (Current)</h3>
+      <div class="tree">fieldsalestools.com/
+├── /tools                        ← Directory index (20 tools)
+│   └── /tools/[slug]             ← Individual tool review pages (20)
+├── /compare                      ← Comparison hub (only 6 shown, 60 in sitemap)
+│   └── /compare/[a]-vs-[b]      ← Head-to-head comparison pages (60)
+├── /industries                   ← Industry index (8 industries)
+│   └── /industries/[slug]        ← Industry-specific tool lists (8)
+├── /stacks                       ← ⚠️ 404 ERROR — index page missing!
+│   └── /stacks/[slug]            ← Tech stack recommendations (17) ← these work
+├── /alternatives                 ← ❌ NO INDEX PAGE EXISTS
+│   └── /alternatives/[slug]      ← ❌ ALL 20 return 404!
+├── /best                         ← ❌ NO INDEX PAGE EXISTS
+│   └── /best/[slug]              ← "Best X for Y" guides (8) ← these work
+├── /about                        ← About page ✅
+├── /advertise                    ← Vendor listing page ✅
+├── /submit                       ← Tool submission form ✅
+├── /privacy                      ← Privacy policy ✅
+└── /disclaimer                   ← Legal disclaimer ✅</div>
+    </div>
+
+    <div class="card">
+      <h3>Page Type Breakdown</h3>
+      <table>
+        <tr><th>Page Type</th><th>Count</th><th>Status</th><th>Depth from Home</th><th>Internal Links To</th></tr>
+        <tr><td>Homepage</td><td>1</td><td><span class="badge badge-low">OK</span></td><td>0</td><td>High</td></tr>
+        <tr><td>Tool reviews (/tools/[slug])</td><td>20</td><td><span class="badge badge-low">OK</span></td><td>2</td><td>Medium</td></tr>
+        <tr><td>Comparisons (/compare/[a]-vs-[b])</td><td>60</td><td><span class="badge badge-med">Partial</span></td><td>2-3</td><td>Low</td></tr>
+        <tr><td>Industry pages (/industries/[slug])</td><td>8</td><td><span class="badge badge-low">OK</span></td><td>2</td><td>Low-Med</td></tr>
+        <tr><td>Tech stacks (/stacks/[slug])</td><td>17</td><td><span class="badge badge-high">Index 404</span></td><td>2</td><td>Low</td></tr>
+        <tr><td>Alternatives (/alternatives/[slug])</td><td>20</td><td><span class="badge badge-high">ALL 404</span></td><td>Dead</td><td>Zero</td></tr>
+        <tr><td>"Best X" guides (/best/[slug])</td><td>8</td><td><span class="badge badge-med">No index</span></td><td>3+</td><td>Very Low</td></tr>
+        <tr><td>Static pages</td><td>6</td><td><span class="badge badge-low">OK</span></td><td>1-2</td><td>N/A</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PROBLEMS -->
+  <div class="section">
+    <div class="section-title">Section 2 — Problems Discovered</div>
+
+    <div class="card">
+      <h3><span class="badge badge-high">HIGH</span> Problem #1: All 20 /alternatives/ pages return 404</h3>
+      <p>The sitemap declares 20 alternatives pages (e.g., <code>/alternatives/spotio-alternatives</code>) and the homepage footer links to them, but <strong>every single one returns 404</strong>. These are high-value programmatic SEO pages targeting "[tool] alternatives" keywords — one of the highest-intent search patterns in SaaS directories.</p>
+      <div class="critical"><strong>Impact:</strong> 20 dead URLs in sitemap being submitted to Google. Footer links on every page pointing to 404s. Missing an entire keyword cluster worth an estimated 2,000-5,000+ monthly searches ("SPOTIO alternatives", "SalesRabbit alternatives", etc.). Google is wasting crawl budget on dead URLs and potentially penalizing site quality signals.</div>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-high">HIGH</span> Problem #2: /stacks index page returns 404</h3>
+      <p>The <code>/stacks</code> hub page is linked in the main navigation but returns 404. Individual stack pages like <code>/stacks/roofing</code> work fine. This means users clicking "Stacks" in the nav hit a dead end.</p>
+      <div class="critical"><strong>Impact:</strong> Broken primary navigation link. The /stacks section has 17 high-quality pages with no hub to tie them together for topical authority. Google sees a broken nav link on every page, damaging crawl signals.</div>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-high">HIGH</span> Problem #3: No /alternatives/ index page exists</h3>
+      <p>Even if the individual alternatives pages are fixed, there is no <code>/alternatives</code> index page to serve as a hub. This section is completely orphaned from the site's IA.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-high">HIGH</span> Problem #4: No /best/ index page exists</h3>
+      <p>The 8 "Best X for Y" guide pages have no index hub at <code>/best</code>. These are valuable money pages that are effectively hidden — only discoverable through deep cross-links or sitemap crawling.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-med">MEDIUM</span> Problem #5: Compare page only surfaces 6 of 60 comparisons</h3>
+      <p>The <code>/compare</code> hub only displays 6 "Editor's Comparisons" despite having 60 comparison pages in the sitemap. The other 54 comparison pages are only accessible via the dynamic dropdown or from individual tool pages — making them essentially orphaned from the hub page's link equity perspective.</p>
+      <div class="highlight"><strong>Impact:</strong> 54 comparison pages get minimal internal linking from the hub. Google has to discover them through deep crawling rather than clear hub → spoke architecture. Massive missed opportunity for topical authority signals.</div>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-med">MEDIUM</span> Problem #6: Category filtering uses query strings, not dedicated URLs</h3>
+      <p>Categories like "D2D &amp; Canvassing," "CRM &amp; Pipeline," etc. use <code>/tools?category=CRM%20%26%20Pipeline</code> query string URLs. These are client-side filtered (same HTML payload) and create no unique indexable pages.</p>
+      <div class="highlight"><strong>Impact:</strong> Missing dedicated category landing pages that could rank for "field sales CRM software", "door to door canvassing tools", "route optimization software" — all high-value keywords. Query string URLs are typically not indexed by Google.</div>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-med">MEDIUM</span> Problem #7: Stacks pages lack internal link distribution</h3>
+      <p>The 17 stack pages are linked from the homepage sidebar and footer but not from the relevant industry or tool pages. A /stacks/roofing page is not linked from /industries/roofing, and vice versa — missing obvious topical linking opportunities.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-low">LOW</span> Problem #8: Shallow content on industry index page</h3>
+      <p>The <code>/industries</code> index page is just 8 cards with ~20-word descriptions each. No introductory content, no SEO copy, no cross-links to related /best/ guides or /stacks/ recommendations.</p>
+    </div>
+
+    <div class="card">
+      <h3><span class="badge badge-low">LOW</span> Problem #9: No blog/content hub</h3>
+      <p>The site has zero editorial/blog content. No <code>/blog</code>, <code>/guides</code>, or <code>/resources</code> section. All content is tool-focused with no informational content to capture top-of-funnel traffic or build E-E-A-T signals.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3: SEVERITY TABLE -->
+  <div class="section">
+    <div class="section-title">Section 3 — Severity Assessment</div>
+    <div class="card">
+      <table>
+        <tr><th>#</th><th>Problem</th><th>Severity</th><th>SEO Impact</th><th>Fix Effort</th></tr>
+        <tr><td>1</td><td>All /alternatives/ pages 404</td><td><span class="badge badge-high">HIGH</span></td><td>~3,000-5,000 missed searches/mo</td><td>Medium (build 20 pages)</td></tr>
+        <tr><td>2</td><td>/stacks index 404</td><td><span class="badge badge-high">HIGH</span></td><td>Broken nav on every page</td><td>Low (create 1 page)</td></tr>
+        <tr><td>3</td><td>No /alternatives/ index</td><td><span class="badge badge-high">HIGH</span></td><td>No hub for alt pages</td><td>Low (create 1 page)</td></tr>
+        <tr><td>4</td><td>No /best/ index</td><td><span class="badge badge-high">HIGH</span></td><td>Money pages orphaned</td><td>Low (create 1 page)</td></tr>
+        <tr><td>5</td><td>Compare shows 6/60 pages</td><td><span class="badge badge-med">MEDIUM</span></td><td>54 orphaned pages</td><td>Medium (redesign hub)</td></tr>
+        <tr><td>6</td><td>Categories as query strings</td><td><span class="badge badge-med">MEDIUM</span></td><td>5-7 keywords uncaptured</td><td>High (new pages + routing)</td></tr>
+        <tr><td>7</td><td>Stacks lack cross-linking</td><td><span class="badge badge-med">MEDIUM</span></td><td>Weak topical signals</td><td>Low (add links)</td></tr>
+        <tr><td>8</td><td>Shallow industry index</td><td><span class="badge badge-low">LOW</span></td><td>Thin content signal</td><td>Low (add copy)</td></tr>
+        <tr><td>9</td><td>No blog/content hub</td><td><span class="badge badge-low">LOW</span></td><td>Missing ToFu traffic</td><td>High (ongoing content)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 4: RECOMMENDATIONS -->
+  <div class="section">
+    <div class="section-title">Section 4 — Recommended Architecture</div>
+
+    <div class="card">
+      <h3>Ideal Directory Architecture (Target State)</h3>
+      <div class="tree">fieldsalestools.com/
+│
+├── /tools                           ← All tools index (20+)
+│   ├── /tools/[slug]                ← Individual review (20 pages)
+│   └── /tools/category/[slug]       ← NEW: Dedicated category pages
+│       ├── /tools/category/field-sales-crm
+│       ├── /tools/category/d2d-canvassing-software
+│       ├── /tools/category/route-optimization
+│       ├── /tools/category/territory-management
+│       ├── /tools/category/sales-engagement
+│       └── /tools/category/analytics-reporting
+│
+├── /compare                         ← REDESIGNED: Full comparison hub
+│   └── /compare/[a]-vs-[b]         ← All 60+ comparisons linked
+│
+├── /alternatives                    ← NEW: Alternatives hub page
+│   └── /alternatives/[slug]         ← FIX: All 20 alternatives pages
+│
+├── /best                            ← NEW: Best-of hub page
+│   └── /best/[slug]                 ← "Best X for Y" guides (8+)
+│
+├── /industries                      ← Industry hub (enhanced)
+│   └── /industries/[slug]           ← Industry tool lists (8)
+│
+├── /stacks                          ← FIX: Create hub page
+│   └── /stacks/[slug]              ← Tech stack guides (17)
+│
+├── /blog                            ← NEW: Content hub
+│   └── /blog/[slug]                ← Editorial articles
+│
+├── /about                           ← About
+├── /advertise                       ← Vendor CTA
+├── /submit                          ← Tool submission
+├── /privacy                         ← Legal
+└── /disclaimer                      ← Legal</div>
+    </div>
+
+    <div class="card">
+      <h3>Recommended URL Structure for New Category Pages</h3>
+      <p>Replace query-string filtering with dedicated, indexable category pages:</p>
+      <table>
+        <tr><th>Current (Not Indexed)</th><th>Recommended (Indexable)</th><th>Target Keyword</th></tr>
+        <tr><td class="url">/tools?category=Field+Sales+CRM</td><td class="url">/tools/category/field-sales-crm</td><td>field sales CRM software</td></tr>
+        <tr><td class="url">/tools?category=D2D+Software</td><td class="url">/tools/category/d2d-canvassing-software</td><td>door to door sales software</td></tr>
+        <tr><td class="url">/tools?category=Territory+Management</td><td class="url">/tools/category/territory-management</td><td>territory management software</td></tr>
+        <tr><td class="url">/tools?category=Route+Optimization</td><td class="url">/tools/category/route-optimization</td><td>route optimization software sales</td></tr>
+        <tr><td class="url">/tools?category=Canvassing</td><td class="url">/tools/category/canvassing-software</td><td>canvassing software</td></tr>
+        <tr><td class="url">/tools?category=Sales+Engagement</td><td class="url">/tools/category/sales-engagement</td><td>field sales engagement tools</td></tr>
+        <tr><td class="url">/tools?category=Analytics</td><td class="url">/tools/category/sales-analytics</td><td>field sales analytics software</td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Internal Linking Blueprint (Hub-and-Spoke)</h3>
+      <p>Every section should follow a hub → spoke → cross-link architecture:</p>
+      <table>
+        <tr><th>Hub Page</th><th>Spokes</th><th>Cross-links To</th></tr>
+        <tr><td class="url">/tools</td><td>20 tool reviews</td><td>/compare, /alternatives, /best, /industries</td></tr>
+        <tr><td class="url">/compare</td><td>60+ comparisons</td><td>/tools (both tools), /alternatives</td></tr>
+        <tr><td class="url">/alternatives</td><td>20 alternatives pages</td><td>/tools (primary tool), /compare</td></tr>
+        <tr><td class="url">/best</td><td>8+ best-of guides</td><td>/tools, /industries, /stacks</td></tr>
+        <tr><td class="url">/industries</td><td>8 industry pages</td><td>/tools, /stacks, /best</td></tr>
+        <tr><td class="url">/stacks</td><td>17 stack guides</td><td>/tools, /industries</td></tr>
+        <tr><td class="url">/blog</td><td>Editorial articles</td><td>All sections contextually</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 5: PRIORITY FIX ORDER -->
+  <div class="section">
+    <div class="section-title">Section 5 — Implementation Priority</div>
+
+    <div class="card">
+      <h3>Fix Order (Impact × Effort)</h3>
+      <table>
+        <tr><th>Priority</th><th>Action</th><th>Pages</th><th>Est. Time</th></tr>
+        <tr><td><strong>P0</strong></td><td>Fix all 20 /alternatives/[slug] pages (they're in sitemap, linked from footer, but 404)</td><td>20</td><td>2-4 hrs</td></tr>
+        <tr><td><strong>P0</strong></td><td>Create /stacks index page (nav link is broken)</td><td>1</td><td>30 min</td></tr>
+        <tr><td><strong>P1</strong></td><td>Create /alternatives index hub page</td><td>1</td><td>30 min</td></tr>
+        <tr><td><strong>P1</strong></td><td>Create /best index hub page</td><td>1</td><td>30 min</td></tr>
+        <tr><td><strong>P1</strong></td><td>Redesign /compare hub to show all 60 comparisons (grouped by tool)</td><td>1</td><td>1-2 hrs</td></tr>
+        <tr><td><strong>P2</strong></td><td>Create 7 dedicated category pages (/tools/category/[slug])</td><td>7</td><td>3-5 hrs</td></tr>
+        <tr><td><strong>P2</strong></td><td>Add cross-links between /stacks ↔ /industries ↔ /best</td><td>33</td><td>1-2 hrs</td></tr>
+        <tr><td><strong>P3</strong></td><td>Enrich /industries index with SEO copy and cross-links</td><td>1</td><td>30 min</td></tr>
+        <tr><td><strong>P3</strong></td><td>Plan and build /blog section</td><td>1+</td><td>Ongoing</td></tr>
+      </table>
+    </div>
+
+    <div class="good"><strong>What's working well:</strong> Tool review pages are deep (~3,000 words), well-structured with schema markup, and have good cross-linking to comparisons. The comparison page template is solid. Industry pages are functional. The site's core review content quality is strong — the architecture just needs to fully support it.</div>
+  </div>
+
+  <!-- PHASE STATUS -->
+  <div class="section">
+    <div class="section-title">Audit Progress</div>
+    <div class="card">
+      <table>
+        <tr><th>Phase</th><th>Status</th><th>Key Focus</th></tr>
+        <tr><td><strong>Phase 1</strong> — Site Structure</td><td><span class="badge badge-low">COMPLETE</span></td><td>Architecture, URL hierarchy, page depth</td></tr>
+        <tr><td><strong>Phase 2</strong> — Internal Links</td><td><span class="badge badge-info">NEXT</span></td><td>Link distribution, orphan pages, anchor text</td></tr>
+        <tr><td><strong>Phase 3</strong> — 404 & Broken Pages</td><td><span class="badge badge-info">PENDING</span></td><td>Every broken URL, redirect plan</td></tr>
+        <tr><td><strong>Phase 4</strong> — Indexing & Crawl</td><td><span class="badge badge-info">PENDING</span></td><td>Sitemap, canonicals, crawl budget</td></tr>
+        <tr><td><strong>Phase 5</strong> — Technical SEO</td><td><span class="badge badge-info">PENDING</span></td><td>Meta, schema, HTML, speed</td></tr>
+        <tr><td><strong>Phase 6</strong> — Directory & Programmatic</td><td><span class="badge badge-info">PENDING</span></td><td>Templates, taxonomy, automation</td></tr>
+        <tr><td><strong>Phase 7</strong> — Content & Authority</td><td><span class="badge badge-info">PENDING</span></td><td>Keyword gaps, topical map, blog</td></tr>
+        <tr><td><strong>Phase 8</strong> — UX & Conversion</td><td><span class="badge badge-info">PENDING</span></td><td>Navigation, discovery, affiliate CTAs</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

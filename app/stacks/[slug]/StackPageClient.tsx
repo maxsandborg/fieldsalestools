@@ -182,7 +182,7 @@ export default function StackPageContent({ stack }: { stack: Stack }) {
             </div>
           </div>
           <Link
-            href="/"
+            href="/stacks"
             style={{
               display: "block",
               marginTop: 12,
@@ -480,10 +480,8 @@ function ToolCard({ tool }: { tool: StackTool }) {
           </div>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
-          <a
+          <Link
             href={tool.toolsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             style={{
               background: "#1d6ce8",
               color: "#fff",
@@ -492,14 +490,15 @@ function ToolCard({ tool }: { tool: StackTool }) {
               fontWeight: 700,
               padding: "7px 14px",
               borderRadius: 7,
+              display: "inline-block",
             }}
           >
             Full Review →
-          </a>
+          </Link>
           <a
-            href={tool.website}
+            href={`/api/go/${tool.slug}`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow sponsored noopener"
             style={{
               background: "#f1f5f9",
               color: "#475569",
@@ -511,7 +510,7 @@ function ToolCard({ tool }: { tool: StackTool }) {
               border: "1px solid #e2e8f0",
             }}
           >
-            Website ↗
+            Visit Website ↗
           </a>
         </div>
       </div>
