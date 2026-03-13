@@ -4,6 +4,8 @@ import { getToolBySlug, getAllSlugs, tools } from "@/data/tools";
 import { getReview, reviewedSlugs } from "@/data/reviews";
 import { comparisons } from "@/data/comparisons";
 import { industries } from "@/data/industries";
+import { stacks } from "@/data/stacks";
+import { bestForPages } from "@/data/best-for";
 import ToolLogo from "@/components/ToolLogo";
 import AffiliateBanner from "@/components/AffiliateBanner";
 import AuthorByline from "@/components/AuthorByline";
@@ -90,6 +92,12 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
   );
   const toolIndustryPages = industries.filter((ind) =>
     tool.industries.includes(ind.industryKey)
+  );
+  const toolStacks = stacks.filter((s) =>
+    s.tools.some((t) => t.slug === tool.slug)
+  );
+  const toolBestFor = bestForPages.filter((bp) =>
+    bp.tools.some((t) => t.slug === tool.slug)
   );
 
   // FAQ generation from existing tool data
@@ -611,7 +619,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
             </section>
 
             {/* Explore More — internal linking */}
-            {(hasAlternativesPage || relatedComparisons.length > 0 || toolIndustryPages.length > 0) && (
+            {(hasAlternativesPage || relatedComparisons.length > 0 || toolIndustryPages.length > 0 || toolStacks.length > 0 || toolBestFor.length > 0) && (
               <section className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e2e8f0" }}>
                 <h2 className="text-lg font-black mb-5" style={{ color: "#0f2340" }}>Explore More</h2>
                 <div className="space-y-5">
@@ -674,6 +682,54 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                             style={{ backgroundColor: "#f0fdf4", color: "#16a34a", border: "1px solid #bbf7d0" }}
                           >
                             {ind.name}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Best-for guides */}
+                  {toolBestFor.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
+                        Buyer&apos;s Guides
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {toolBestFor.map((bp) => (
+                          <Link
+                            key={bp.slug}
+                            href={`/best/${bp.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg"
+                            style={{ backgroundColor: "#fae8ff", color: "#7e22ce", border: "1px solid #e9d5ff" }}
+                          >
+                            {bp.title}
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Stack pages */}
+                  {toolStacks.length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>
+                        Tech Stacks Featuring {tool.name}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {toolStacks.map((s) => (
+                          <Link
+                            key={s.slug}
+                            href={`/stacks/${s.slug}`}
+                            className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg"
+                            style={{ backgroundColor: "#fef3c7", color: "#92400e", border: "1px solid #fde68a" }}
+                          >
+                            {s.title}
                             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                             </svg>

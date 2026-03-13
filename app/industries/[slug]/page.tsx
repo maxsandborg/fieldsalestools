@@ -3,6 +3,9 @@ import Link from "next/link";
 import ToolCard from "@/components/ToolCard";
 import { getIndustry, getAllIndustrySlugs } from "@/data/industries";
 import { tools } from "@/data/tools";
+import { stacks } from "@/data/stacks";
+import { bestForPages } from "@/data/best-for";
+import { comparisons } from "@/data/comparisons";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -43,6 +46,22 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const industryTools = tools.filter((t) =>
     t.industries.includes(ind.industryKey)
   );
+
+  // Related stacks for this industry
+  const industryToolSlugs = industryTools.map((t) => t.slug);
+  const relatedStacks = stacks.filter(
+    (s) => s.industry?.toLowerCase() === ind.name.toLowerCase() || s.tools.some((t) => industryToolSlugs.includes(t.slug))
+  ).slice(0, 4);
+
+  // Related best-for guides
+  const relatedBestFor = bestForPages.filter((bp) =>
+    bp.tools.some((t) => industryToolSlugs.includes(t.slug))
+  ).slice(0, 4);
+
+  // Related comparisons between industry tools
+  const relatedComparisons = comparisons.filter(
+    (c) => industryToolSlugs.includes(c.tool1) && industryToolSlugs.includes(c.tool2)
+  ).slice(0, 6);
 
   const pageUrl = `https://www.fieldsalestools.com/industries/${slug}`;
   const breadcrumbLd = {
@@ -175,6 +194,54 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
             ))}
           </div>
         </section>
+
+        {/* Related Resources */}
+        {(relatedStacks.length > 0 || relatedBestFor.length > 0 || relatedComparisons.length > 0) && (
+          <section className="bg-white rounded-2xl p-6 mb-10" style={{ border: "1px solid #e2e8f0" }}>
+            <h2 className="text-lg font-black mb-5" style={{ color: "#0f2340" }}>Related Resources</h2>
+            <div className="space-y-5">
+              {relatedStacks.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>Tech Stacks</p>
+                  <div className="flex flex-wrap gap-2">
+                    {relatedStacks.map((s) => (
+                      <Link key={s.slug} href={`/stacks/${s.slug}`} className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg" style={{ backgroundColor: "#fef3c7", color: "#92400e", border: "1px solid #fde68a" }}>
+                        {s.title}
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {relatedBestFor.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>Buyer&apos;s Guides</p>
+                  <div className="flex flex-wrap gap-2">
+                    {relatedBestFor.map((bp) => (
+                      <Link key={bp.slug} href={`/best/${bp.slug}`} className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg" style={{ backgroundColor: "#fae8ff", color: "#7e22ce", border: "1px solid #e9d5ff" }}>
+                        {bp.title}
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {relatedComparisons.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#94a3b8" }}>Head-to-Head Comparisons</p>
+                  <div className="flex flex-wrap gap-2">
+                    {relatedComparisons.map((c) => (
+                      <Link key={c.slug} href={`/compare/${c.slug}`} className="inline-flex items-center gap-1 text-sm font-medium no-underline px-3 py-1.5 rounded-lg" style={{ backgroundColor: "#f1f5f9", color: "#374151", border: "1px solid #e2e8f0" }}>
+                        {c.title.replace(/ \(\d{4}\).*$/, "")}
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* Back to industries */}
         <div className="text-center mb-4">

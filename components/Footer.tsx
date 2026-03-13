@@ -45,11 +45,11 @@ export default function Footer() {
                 { href: "/tools", label: "All Tools" },
                 { href: "/best", label: "Best Of Guides" },
                 { href: "/alternatives", label: "Alternatives" },
-                { href: "/tools/spotio", label: "SPOTIO" },
-                { href: "/tools/salesrabbit", label: "SalesRabbit" },
-                { href: "/tools/badger-maps", label: "Badger Maps" },
-                { href: "/tools/knockio", label: "Knockio" },
                 { href: "/compare", label: "Compare Tools" },
+                { href: "/tools/category/field-sales-crm", label: "Field Sales CRM" },
+                { href: "/tools/category/d2d-software", label: "D2D Software" },
+                { href: "/tools/category/route-planning", label: "Route Planning" },
+                { href: "/tools/category/canvassing", label: "Canvassing" },
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -74,7 +74,9 @@ export default function Footer() {
                 { href: "/stacks/pest-control", label: "Pest Control" },
                 { href: "/stacks/hvac", label: "HVAC" },
                 { href: "/stacks/telecom-fiber", label: "Telecom & Fiber" },
-                { href: "/stacks/medical-devices", label: "Medical Devices" },
+                { href: "/stacks/solo-rep", label: "Solo Reps" },
+                { href: "/stacks/smb-team", label: "Small Teams" },
+                { href: "/stacks/mid-market-team", label: "Mid-Market" },
                 { href: "/industries", label: "All Industries" },
               ].map((link) => (
                 <Link

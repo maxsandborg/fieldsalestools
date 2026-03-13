@@ -162,9 +162,7 @@ export default function StackPageContent({ stack }: { stack: Stack }) {
                 Compare individual tools in detail:
               </p>
               <a
-                href="https://www.fieldsalestools.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/tools"
                 style={{
                   display: "block",
                   background: "#1d6ce8",
@@ -345,9 +343,7 @@ export default function StackPageContent({ stack }: { stack: Stack }) {
               </div>
             </div>
             <a
-              href="https://www.fieldsalestools.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/tools"
               style={{
                 background: "#1d6ce8",
                 color: "#fff",
