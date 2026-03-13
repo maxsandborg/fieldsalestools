@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import type { Stack, StackTool } from "../../../data/stacks";
+import ToolLogo from "@/components/ToolLogo";
 import TocHighlighter from "../../../components/TocHighlighter";
 import FaqAccordion from "../../../components/FaqAccordion";
 
@@ -252,7 +253,7 @@ export default function StackPageContent({ stack }: { stack: Stack }) {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {stack.tools.map((tool) => (
                   <div key={tool.slug} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ fontSize: 18, width: 24, textAlign: "center" }}>{tool.logo}</span>
+                    <span style={{ width: 24, textAlign: "center", display: "inline-flex", justifyContent: "center" }}><ToolLogo website={tool.website} name={tool.name} fallbackEmoji={tool.logo} size={20} /></span>
                     <span style={{ color: "#94a3b8", fontSize: 13, minWidth: 120 }}>{tool.name}</span>
                     <span style={{ color: "#fff", fontSize: 13, fontWeight: 700 }}>{tool.price}</span>
                   </div>
@@ -403,9 +404,10 @@ function ToolCard({ tool }: { tool: StackTool }) {
             fontSize: 22,
             border: "1px solid #e2e8f0",
             flexShrink: 0,
+            overflow: "hidden",
           }}
         >
-          {tool.logo}
+          <ToolLogo website={tool.website} name={tool.name} fallbackEmoji={tool.logo} size={36} />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>

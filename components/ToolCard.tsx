@@ -81,7 +81,7 @@ export default function ToolCard({ tool, rank }: { tool: Tool; rank?: number }) 
             style={{ backgroundColor: "#f0f4f8", border: "1px solid #e2e8f0" }}
           >
             <img
-              src={`https://logo.clearbit.com/${new URL(tool.website).hostname}`}
+              src={`https://www.google.com/s2/favicons?domain=${new URL(tool.website).hostname.replace(/^www\./, "")}&sz=128`}
               alt={`${tool.name} logo`}
               width={40}
               height={40}

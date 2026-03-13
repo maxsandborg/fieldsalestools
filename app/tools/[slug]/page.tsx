@@ -819,7 +819,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
                       href={`/tools/${rel.slug}`}
                       className="flex items-center gap-3 no-underline group"
                     >
-                      <span className="text-xl">{rel.logo}</span>
+                      <ToolLogo website={rel.website} name={rel.name} fallbackEmoji={rel.logo} size={28} />
                       <div>
                         <p className="text-sm font-semibold group-hover:underline" style={{ color: "#1d6ce8" }}>
                           {rel.name}

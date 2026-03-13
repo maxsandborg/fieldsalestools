@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getToolBySlug, tools } from "@/data/tools";
 import { getReview, reviewedSlugs } from "@/data/reviews";
 import AffiliateBanner from "@/components/AffiliateBanner";
+import ToolLogo from "@/components/ToolLogo";
 
 export async function generateStaticParams() {
   return reviewedSlugs.map((slug) => ({ slug }));
@@ -291,10 +292,10 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <div className="flex items-center gap-4">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden"
                     style={{ backgroundColor: "#f0f6ff", border: "1px solid #dbeafe" }}
                   >
-                    {alt.logo}
+                    <ToolLogo website={alt.website} name={alt.name} fallbackEmoji={alt.logo} size={36} />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { bestForPages } from "@/data/best-for";
 import { tools } from "@/data/tools";
+import ToolLogo from "@/components/ToolLogo";
 
 export const metadata = {
   title: "Best Field Sales Software Guides | FieldSalesTools.com",
@@ -64,7 +65,7 @@ export default function BestPage() {
                       className="flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg mb-3"
                       style={{ backgroundColor: "#f0fdf4", color: "#16a34a" }}
                     >
-                      <span>{topTool.logo}</span>
+                      <ToolLogo website={topTool.website} name={topTool.name} fallbackEmoji={topTool.logo} size={18} />
                       <span>Top pick: {topTool.name}</span>
                     </div>
                   )}

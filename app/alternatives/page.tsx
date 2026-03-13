@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { tools } from "@/data/tools";
 import { reviewedSlugs } from "@/data/reviews";
+import ToolLogo from "@/components/ToolLogo";
 
 export const metadata = {
   title: "Field Sales Software Alternatives | FieldSalesTools.com",
@@ -62,10 +63,10 @@ export default function AlternativesPage() {
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden"
                       style={{ backgroundColor: "#f0f6ff" }}
                     >
-                      {tool.logo}
+                      <ToolLogo website={tool.website} name={tool.name} fallbackEmoji={tool.logo} size={32} />
                     </div>
                     <div>
                       <h2 className="text-base font-black" style={{ color: "#0f2340" }}>

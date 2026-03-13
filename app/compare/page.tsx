@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { tools } from "@/data/tools";
 import { comparisons } from "@/data/comparisons";
+import ToolLogo from "@/components/ToolLogo";
 
 // ── Helpers ─────────────────────────────────────────────────────────────────────
 function getToolName(slug: string) {
@@ -163,7 +164,7 @@ export default function ComparePage() {
                     className="flex items-center gap-2 px-3 py-1.5 rounded-lg"
                     style={{ backgroundColor: "#f0f6ff" }}
                   >
-                    <span className="text-lg">{t?.logo ?? "—"}</span>
+                    {t ? <ToolLogo website={t.website} name={t.name} fallbackEmoji={t.logo} size={24} /> : <span className="text-lg">—</span>}
                     <span className="text-sm font-bold" style={{ color: "#0f2340" }}>
                       {t?.name ?? "—"}
                     </span>
@@ -271,7 +272,7 @@ export default function ComparePage() {
                   cursor: "pointer",
                 }}
               >
-                {getToolLogo(slug)} {getToolName(slug)} ({count})
+                <ToolLogo website={tools.find(t => t.slug === slug)?.website ?? ""} name={getToolName(slug)} fallbackEmoji={getToolLogo(slug)} size={16} /> {getToolName(slug)} ({count})
               </button>
             ))}
           </div>
@@ -346,10 +347,10 @@ function ComparisonCard({
         {/* Tool logos + VS */}
         <div className="flex items-center gap-2 mb-3">
           <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-lg"
+            className="w-9 h-9 rounded-lg flex items-center justify-center overflow-hidden"
             style={{ backgroundColor: "#f0f6ff" }}
           >
-            {t1?.logo ?? "🔧"}
+            {t1 ? <ToolLogo website={t1.website} name={t1.name} fallbackEmoji={t1.logo} size={28} /> : <span className="text-lg">🔧</span>}
           </div>
           <span
             className="text-[10px] font-black"
@@ -358,10 +359,10 @@ function ComparisonCard({
             VS
           </span>
           <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-lg"
+            className="w-9 h-9 rounded-lg flex items-center justify-center overflow-hidden"
             style={{ backgroundColor: "#f0f6ff" }}
           >
-            {t2?.logo ?? "🔧"}
+            {t2 ? <ToolLogo website={t2.website} name={t2.name} fallbackEmoji={t2.logo} size={28} /> : <span className="text-lg">🔧</span>}
           </div>
         </div>
 

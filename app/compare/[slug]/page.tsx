@@ -5,6 +5,7 @@ import { getToolBySlug, tools } from "@/data/tools";
 import type { Metadata } from "next";
 import AffiliateBanner from "@/components/AffiliateBanner";
 import AuthorByline from "@/components/AuthorByline";
+import ToolLogo from "@/components/ToolLogo";
 
 // Parse slug like "spotio-vs-salesrabbit" → ["spotio", "salesrabbit"]
 function parseSlugs(slug: string): [string, string] | null {
@@ -238,8 +239,8 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           ]).map(({ tool, name, bestFor, side }) => (
             <div key={side} className="bg-white rounded-2xl p-6" style={{ border: winnerOverall === side ? "2px solid #1d6ce8" : "1px solid #e2e8f0" }}>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style={{ backgroundColor: "#f0f6ff" }}>
-                  {tool.logo}
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#f0f6ff" }}>
+                  <ToolLogo website={tool.website} name={name} fallbackEmoji={tool.logo} size={32} />
                 </div>
                 <div>
                   <h2 className="font-black text-lg" style={{ color: "#0f2340" }}>{name}</h2>
