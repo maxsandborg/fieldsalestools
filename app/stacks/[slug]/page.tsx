@@ -91,6 +91,12 @@ export default async function StackPage({
           {
             "@type": "ListItem",
             position: 2,
+            name: "Stacks",
+            item: "https://www.fieldsalestools.com/stacks",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
             name: stack.title,
             item: pageUrl,
           },

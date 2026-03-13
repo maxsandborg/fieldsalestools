@@ -87,9 +87,18 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
     if (parsed) c = getComparison(`${parsed[1]}-vs-${parsed[0]}`);
   }
 
-  const parsed = parseSlugs(slug);
-  if (!parsed) notFound();
-  const [slug1, slug2] = parsed;
+  // Resolve tool slugs: prefer pre-written comparison's tool1/tool2 fields
+  // (handles cases where slug doesn't match tool slug, e.g. "leadsquared" vs "leadsquared-field-force")
+  let slug1: string;
+  let slug2: string;
+  if (c) {
+    slug1 = c.tool1;
+    slug2 = c.tool2;
+  } else {
+    const parsed = parseSlugs(slug);
+    if (!parsed) notFound();
+    [slug1, slug2] = parsed;
+  }
 
   const tool1 = getToolBySlug(slug1);
   const tool2 = getToolBySlug(slug2);
@@ -127,44 +136,54 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
   const bestFor2 = c ? c.bestFor2 : tool2.pros[0] ?? `${tool2Name} users`;
   const verdict = c ? c.verdict : `Based on ratings and features, ${winnerName ?? "both tools"} ${winnerOverall === "tie" ? "are evenly matched" : "has the edge"} — but the right choice depends on your team's specific workflow and budget.`;
 
-  // JSON-LD: ComparisonPage schema with both SoftwareApplications + BreadcrumbList
+  // JSON-LD: Comparison schema with SoftwareApplications + BreadcrumbList
+  const priceMatch1 = tool1.pricingFrom.match(/\$(\d+)/);
+  const priceMatch2 = tool2.pricingFrom.match(/\$(\d+)/);
+
   const compareSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "name": title,
-        "description": metaDesc,
-        "url": `https://www.fieldsalestools.com/compare/${slug}`,
-        "dateModified": "2026-03-01",
-        "about": [
-          {
-            "@type": "SoftwareApplication",
-            "name": tool1Name,
-            "url": `https://www.fieldsalestools.com/tools/${slug1}`,
-            "applicationCategory": "BusinessApplication",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": tool1.rating.toString(),
-              "reviewCount": tool1.reviewCount.toString(),
-              "bestRating": "5",
-              "worstRating": "1"
-            }
-          },
-          {
-            "@type": "SoftwareApplication",
-            "name": tool2Name,
-            "url": `https://www.fieldsalestools.com/tools/${slug2}`,
-            "applicationCategory": "BusinessApplication",
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": tool2.rating.toString(),
-              "reviewCount": tool2.reviewCount.toString(),
-              "bestRating": "5",
-              "worstRating": "1"
-            }
+        "@type": "SoftwareApplication",
+        "name": tool1Name,
+        "url": `https://www.fieldsalestools.com/tools/${slug1}`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": tool1.platforms.join(", "),
+        ...(priceMatch1 && {
+          "offers": {
+            "@type": "Offer",
+            "price": priceMatch1[1],
+            "priceCurrency": "USD"
           }
-        ]
+        }),
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": tool1.rating,
+          "reviewCount": tool1.reviewCount,
+          "bestRating": 5,
+          "worstRating": 1
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": tool2Name,
+        "url": `https://www.fieldsalestools.com/tools/${slug2}`,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": tool2.platforms.join(", "),
+        ...(priceMatch2 && {
+          "offers": {
+            "@type": "Offer",
+            "price": priceMatch2[1],
+            "priceCurrency": "USD"
+          }
+        }),
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": tool2.rating,
+          "reviewCount": tool2.reviewCount,
+          "bestRating": 5,
+          "worstRating": 1
+        }
       },
       {
         "@type": "BreadcrumbList",

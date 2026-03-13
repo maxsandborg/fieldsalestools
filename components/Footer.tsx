@@ -43,13 +43,13 @@ export default function Footer() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[
                 { href: "/tools", label: "All Tools" },
+                { href: "/best", label: "Best Of Guides" },
+                { href: "/alternatives", label: "Alternatives" },
                 { href: "/tools/spotio", label: "SPOTIO" },
                 { href: "/tools/salesrabbit", label: "SalesRabbit" },
                 { href: "/tools/badger-maps", label: "Badger Maps" },
                 { href: "/tools/knockio", label: "Knockio" },
                 { href: "/compare", label: "Compare Tools" },
-                { href: "/alternatives/spotio", label: "SPOTIO Alternatives" },
-                { href: "/alternatives/salesrabbit", label: "SalesRabbit Alternatives" },
               ].map((link) => (
                 <Link
                   key={link.href}

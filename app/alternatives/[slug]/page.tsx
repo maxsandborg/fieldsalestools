@@ -197,12 +197,13 @@ export default async function AlternativesPage({ params }: { params: Promise<{ s
             "name": alt.name,
             "description": alt.tagline,
             "applicationCategory": "BusinessApplication",
+            "operatingSystem": alt.platforms.join(", "),
             "aggregateRating": {
               "@type": "AggregateRating",
-              "ratingValue": alt.rating.toString(),
-              "reviewCount": alt.reviewCount.toString(),
-              "bestRating": "5",
-              "worstRating": "1"
+              "ratingValue": alt.rating,
+              "reviewCount": alt.reviewCount,
+              "bestRating": 5,
+              "worstRating": 1
             }
           }
         }))

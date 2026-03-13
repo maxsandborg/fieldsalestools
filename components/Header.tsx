@@ -9,6 +9,7 @@ export default function Header() {
   const navLinks = [
     { href: "/tools", label: "Tools" },
     { href: "/compare", label: "Compare" },
+    { href: "/best", label: "Best Of" },
     { href: "/industries", label: "Industries" },
     { href: "/stacks", label: "Stacks" },
   ];

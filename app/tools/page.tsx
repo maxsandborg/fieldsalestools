@@ -8,6 +8,7 @@ export const metadata = {
   title: "Best Field Sales Software 2026 — 20+ Tools Reviewed | FieldSalesTools.com",
   description:
     "Independent reviews of every major field sales, D2D, and canvassing software tool. Compare pricing, features, and see which tools fit your team size and vertical.",
+  alternates: { canonical: "https://www.fieldsalestools.com/tools" },
 };
 
 const CATEGORIES = [

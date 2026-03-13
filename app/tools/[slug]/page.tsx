@@ -167,23 +167,24 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         }),
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": tool.rating.toString(),
-          "reviewCount": tool.reviewCount.toString(),
-          "bestRating": "5",
-          "worstRating": "1"
+          "ratingValue": tool.rating,
+          "reviewCount": tool.reviewCount,
+          "bestRating": 5,
+          "worstRating": 1
         },
         ...(review && {
           "review": {
             "@type": "Review",
             "reviewRating": {
               "@type": "Rating",
-              "ratingValue": review.editorScore.toString(),
-              "bestRating": "10",
-              "worstRating": "1"
+              "ratingValue": review.editorScore,
+              "bestRating": 10,
+              "worstRating": 1
             },
             "author": {
               "@type": "Organization",
-              "name": "FieldSalesTools.com Editorial Team"
+              "name": "FieldSalesTools.com Editorial Team",
+              "url": "https://www.fieldsalestools.com"
             },
             "reviewBody": review.reviewBody[0],
             "datePublished": "2026-03-01"
