@@ -221,18 +221,22 @@ export default async function ComparisonPage({ params }: { params: Promise<{ slu
           <div className="px-6 py-4" style={{ borderBottom: "1px solid #e2e8f0" }}>
             <h2 className="text-lg font-black" style={{ color: "#0f2340" }}>Side-by-Side Comparison</h2>
           </div>
-          <div className="grid grid-cols-3 px-6 py-3 text-xs font-bold uppercase tracking-wide" style={{ backgroundColor: "#f8fafc", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>
-            <div>Feature</div>
-            <div className="text-center">{tool1Name}</div>
-            <div className="text-center">{tool2Name}</div>
-          </div>
-          {differences.map((row, i) => (
-            <div key={row.label} className="grid grid-cols-3 px-6 py-4 text-sm" style={{ borderBottom: i < differences.length - 1 ? "1px solid #f1f5f9" : "none", backgroundColor: i % 2 === 0 ? "#fff" : "#fafbfc" }}>
-              <div className="font-semibold" style={{ color: "#374151" }}>{row.label}</div>
-              <div className="text-center" style={{ color: "#475569" }}>{row.tool1}</div>
-              <div className="text-center" style={{ color: "#475569" }}>{row.tool2}</div>
+          <div style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" }}>
+            <div style={{ minWidth: 480 }}>
+              <div className="grid grid-cols-3 px-6 py-3 text-xs font-bold uppercase tracking-wide" style={{ backgroundColor: "#f8fafc", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>
+                <div>Feature</div>
+                <div className="text-center">{tool1Name}</div>
+                <div className="text-center">{tool2Name}</div>
+              </div>
+              {differences.map((row, i) => (
+                <div key={row.label} className="grid grid-cols-3 px-6 py-4 text-sm" style={{ borderBottom: i < differences.length - 1 ? "1px solid #f1f5f9" : "none", backgroundColor: i % 2 === 0 ? "#fff" : "#fafbfc" }}>
+                  <div className="font-semibold" style={{ color: "#374151" }}>{row.label}</div>
+                  <div className="text-center" style={{ color: "#475569" }}>{row.tool1}</div>
+                  <div className="text-center" style={{ color: "#475569" }}>{row.tool2}</div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </section>
 
         {/* Pros/Cons if no pre-written comparison */}
