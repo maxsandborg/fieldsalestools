@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Audit — SwedishCrave.com | March 2026</title>
+<style>
+  :root {
+    --navy: #1a1040;
+    --purple: #6d28d9;
+    --light-purple: #f5f0ff;
+    --green: #16a34a;
+    --green-bg: #f0fdf4;
+    --amber: #d97706;
+    --amber-bg: #fffbeb;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --pink: #db2777;
+    --pink-bg: #fdf2f8;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--gray-700); line-height: 1.65; background: var(--gray-50); }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  .header { background: linear-gradient(135deg, var(--navy) 0%, #2d1b69 50%, #4c1d95 100%); padding: 48px 0 40px; }
+  .header h1 { color: #fff; font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+  .header .subtitle { color: #c4b5fd; font-size: 16px; }
+  .header .meta { color: #8b7fba; font-size: 13px; margin-top: 16px; }
+
+  .phase { margin: 48px 0 24px; }
+  .phase-label { display: inline-block; background: var(--purple); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .phase h2 { color: var(--navy); font-size: 24px; font-weight: 800; }
+  .phase p.desc { color: var(--gray-500); font-size: 14px; margin-top: 4px; }
+
+  .card { background: #fff; border: 1px solid var(--gray-200); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+  .card h3 { color: var(--navy); font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+  .card h4 { color: var(--gray-600); font-size: 14px; font-weight: 700; margin: 16px 0 8px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 20px 0; }
+  .stat { background: var(--light-purple); border-radius: 12px; padding: 20px; text-align: center; }
+  .stat .value { font-size: 28px; font-weight: 800; color: var(--navy); }
+  .stat .label { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th { background: var(--gray-100); color: var(--gray-600); font-weight: 700; text-align: left; padding: 10px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); }
+  tr:last-child td { border-bottom: none; }
+  .highlight-row { background: var(--light-purple); }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-green { background: var(--green-bg); color: var(--green); }
+  .badge-amber { background: var(--amber-bg); color: var(--amber); }
+  .badge-red { background: var(--red-bg); color: var(--red); }
+  .badge-purple { background: var(--light-purple); color: var(--purple); }
+  .badge-pink { background: var(--pink-bg); color: var(--pink); }
+
+  .callout { border-radius: 12px; padding: 20px 24px; margin: 16px 0; font-size: 14px; }
+  .callout-purple { background: var(--light-purple); border-left: 4px solid var(--purple); }
+  .callout-green { background: var(--green-bg); border-left: 4px solid var(--green); }
+  .callout-amber { background: var(--amber-bg); border-left: 4px solid var(--amber); }
+  .callout-red { background: var(--red-bg); border-left: 4px solid var(--red); }
+  .callout strong { color: var(--navy); }
+
+  ul, ol { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 6px; font-size: 14px; }
+
+  .kw-vol { font-weight: 700; color: var(--navy); }
+  .kw-diff-low { color: var(--green); font-weight: 600; }
+  .kw-diff-med { color: var(--amber); font-weight: 600; }
+  .kw-diff-high { color: var(--red); font-weight: 600; }
+
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .summary-grid { grid-template-columns: 1fr; } }
+  .summary-item { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 20px; }
+  .summary-item .icon { font-size: 24px; margin-bottom: 8px; }
+  .summary-item h4 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .summary-item p { font-size: 13px; color: var(--gray-500); }
+
+  .rev-highlight { background: linear-gradient(90deg, var(--light-purple), #fff); font-weight: 600; }
+
+  .footer { text-align: center; padding: 40px 0; color: var(--gray-400); font-size: 12px; }
+  p { margin-bottom: 12px; font-size: 14px; }
+
+  .toc { list-style: none; padding: 0; }
+  .toc li { padding: 6px 0; border-bottom: 1px solid var(--gray-100); }
+  .toc li:last-child { border: none; }
+  .toc a { color: var(--purple); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .toc .phase-num { color: var(--gray-400); font-size: 12px; margin-right: 8px; }
+
+  .vs-box { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center; margin: 16px 0; }
+  .vs-box .site { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 12px; padding: 16px; text-align: center; }
+  .vs-box .vs { font-size: 20px; font-weight: 800; color: var(--gray-400); }
+  .vs-box .site h4 { margin: 0 0 4px; color: var(--navy); font-size: 14px; }
+  .vs-box .site p { margin: 0; font-size: 12px; color: var(--gray-500); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="container">
+    <h1>SEO Audit &amp; Revenue Analysis</h1>
+    <div class="subtitle">SwedishCrave.com — Comprehensive 4-Phase Report</div>
+    <div class="meta">Prepared March 13, 2026 &bull; Cross-referenced with FieldSalesStack Masterplan methodology</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="card" style="margin-top: 32px;">
+    <h3>Contents</h3>
+    <ul class="toc">
+      <li><span class="phase-num">01</span> <a href="#phase1">Niche &amp; Market Size</a></li>
+      <li><span class="phase-num">02</span> <a href="#phase2">SEO Competition Analysis</a></li>
+      <li><span class="phase-num">03</span> <a href="#phase3">Keyword Opportunity Analysis</a></li>
+      <li><span class="phase-num">04</span> <a href="#phase4">Directory Business Model &amp; Revenue Analysis</a></li>
+      <li><span class="phase-num">05</span> <a href="#masterplan">Masterplan Synergies &amp; Action Items</a></li>
+    </ul>
+  </div>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="card" style="border-left: 4px solid var(--purple);">
+    <h3>Executive Summary</h3>
+    <p>SwedishCrave.com is a <strong>56-page candy review directory</strong> entering one of the hottest viral food trends of 2024–2026. The Swedish candy market in the US is experiencing <strong>240% YoY search growth</strong>, fueled by 120M+ TikTok views and mainstream media coverage (NBC, Washington Post). The niche has real e-commerce competitors but <strong>almost zero independent review/directory sites</strong> — creating a massive content gap.</p>
+    <p>Unlike FieldSalesTools.com (B2B, high deal value, low volume), SwedishCrave operates in a <strong>B2C consumer niche with high volume, viral potential, and impulse-buy behavior</strong>. The monetization path is different — affiliate commissions from candy stores (10–15%), Amazon Associates, and display ads — but the <strong>directory playbook is identical</strong>: build topical authority through comprehensive, interlinked content that no e-commerce store will replicate.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="value">240%</div>
+        <div class="label">YoY search growth</div>
+      </div>
+      <div class="stat">
+        <div class="value">120M+</div>
+        <div class="label">TikTok views #SwedishCandy</div>
+      </div>
+      <div class="stat">
+        <div class="value">56</div>
+        <div class="label">Pages live</div>
+      </div>
+      <div class="stat">
+        <div class="value">8–10%</div>
+        <div class="label">Market CAGR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 1: NICHE & MARKET SIZE -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phase" id="phase1">
+    <span class="phase-label">Phase 1</span>
+    <h2>Niche &amp; Market Size</h2>
+    <p class="desc">How big is the Swedish candy niche in the US and what are the growth dynamics?</p>
+  </div>
+
+  <div class="card">
+    <h3>The Swedish Candy Boom — By the Numbers</h3>
+    <p>This is not a sleepy niche. Swedish candy is experiencing a once-in-a-decade viral consumer trend, comparable to bubble tea in 2019 or Korean skincare in 2016. The data:</p>
+
+    <table>
+      <tr>
+        <th>Metric</th>
+        <th>Data Point</th>
+        <th>Source</th>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>TikTok views on #SwedishCandy</strong></td>
+        <td>120M+ (mid-2024), still growing</td>
+        <td>TikTok / Goodis</td>
+      </tr>
+      <tr>
+        <td><strong>"Buy Swedish candy" search growth</strong></td>
+        <td>+240% year-over-year</td>
+        <td>Google Trends</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>"Swedish pick and mix" interest</strong></td>
+        <td>Tripled YoY</td>
+        <td>Google Trends</td>
+      </tr>
+      <tr>
+        <td><strong>BonBon NYC online orders</strong></td>
+        <td>20x surge, midnight store hours</td>
+        <td>NBC News</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Swedish candy annual growth</strong></td>
+        <td>8–10% through 2026</td>
+        <td>Industry reports</td>
+      </tr>
+      <tr>
+        <td><strong>Sour candy segment growth</strong></td>
+        <td>20–30% YoY</td>
+        <td>Accio / trend data</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>US total candy market</strong></td>
+        <td>$25B (2025) → $32B (2032)</td>
+        <td>Coherent MI</td>
+      </tr>
+      <tr>
+        <td><strong>Nordic candy shops opening in US</strong></td>
+        <td>Major trend, WashPost feature</td>
+        <td>Washington Post, Dec 2025</td>
+      </tr>
+    </table>
+
+    <div class="callout callout-green">
+      <strong>Niche verdict: MEDIUM-LARGE with viral tailwinds.</strong> Swedish candy is a sub-niche of the $25B US candy market. While "Swedish candy" alone is small, the adjacent keywords (candy reviews, gummy reviews, sour candy, TikTok candy, Nordic food) create a massive addressable search universe. The TikTok virality means millions of Americans have been exposed to Swedish candy but don't know where to buy it or which ones are best — which is exactly what a review directory solves.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Market Timing — Why Now Matters</h3>
+    <p>SwedishCrave is entering this market at the <strong>ideal timing window</strong>:</p>
+
+    <h4>The viral awareness phase (2023–2024) is DONE</h4>
+    <p>120M TikTok views, NBC/WashPost coverage, BUBS arriving in US stores — the awareness work has been done for free by influencers and media. Consumers now know Swedish candy exists.</p>
+
+    <h4>The "where do I buy it / which ones are good" phase (2025–2026) is NOW</h4>
+    <p>This is where a review directory captures demand. People who saw TikTok videos are now Googling "best Swedish candy," "Swedish candy review," and "where to buy Swedish candy." There are 10+ e-commerce stores competing for sales, but <strong>no independent, comprehensive review site</strong> guiding those purchase decisions.</p>
+
+    <h4>The normalization phase (2027+) is the long tail</h4>
+    <p>Swedish candy becomes a permanent category in US retail (like Japanese snacks or Korean ramen before it). Sustained search volume, less viral spike but stable demand.</p>
+
+    <div class="callout callout-purple">
+      <strong>FieldSalesTools comparison:</strong> FieldSalesTools targets a steady B2B market ($2.5–3.5B) with slow, predictable growth. SwedishCrave targets a consumer trend with explosive short-term growth but potential plateau. The strategies differ: FieldSalesTools is a long-term SEO play; SwedishCrave should combine SEO with social/viral distribution to capture the current wave. Both use the same directory architecture.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 2: SEO COMPETITION ANALYSIS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phase" id="phase2">
+    <span class="phase-label">Phase 2</span>
+    <h2>SEO Competition Analysis</h2>
+    <p class="desc">Who ranks for Swedish candy keywords and what type of content dominates?</p>
+  </div>
+
+  <div class="card">
+    <h3>Competitor Landscape</h3>
+    <p>The SERP competition falls into four distinct categories — and critically, <strong>none of them is a dedicated review directory</strong>:</p>
+
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Competitor</th>
+        <th>Est. DR</th>
+        <th>Strategy</th>
+        <th>Threat</th>
+      </tr>
+      <tr>
+        <td rowspan="3"><strong>E-commerce stores</strong></td>
+        <td>Sockerbit.com</td>
+        <td>35–45</td>
+        <td>Premium brand, NYC stores + online</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td>SwedishCandyLand.com</td>
+        <td>25–35</td>
+        <td>Widest selection, blog content</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td>SwedishCandyStore.com</td>
+        <td>20–30</td>
+        <td>100+ varieties, fast shipping</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+      <tr>
+        <td rowspan="3"><strong>E-commerce (newer)</strong></td>
+        <td>BonBonNYC.com</td>
+        <td>30–40</td>
+        <td>Physical NYC stores + DTC</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+      <tr>
+        <td>Goodis.us</td>
+        <td>15–25</td>
+        <td>Swedish brand, launched Nov 2024</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+      <tr>
+        <td>NordicCravings.com</td>
+        <td>15–25</td>
+        <td>Broader Nordic candy</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+      <tr>
+        <td rowspan="3"><strong>Media/editorial</strong></td>
+        <td>TastingTable.com</td>
+        <td>85+</td>
+        <td>"21 Swedish Candies Ranked" (1 article)</td>
+        <td><span class="badge badge-red">High for head terms</span></td>
+      </tr>
+      <tr>
+        <td>Sporked.com</td>
+        <td>60–70</td>
+        <td>"Best Swedish Candy" ranking (1 article)</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+      </tr>
+      <tr>
+        <td>NBCNews.com</td>
+        <td>90+</td>
+        <td>"Swedish gummies craze" news piece</td>
+        <td><span class="badge badge-green">Low (news, not evergreen)</span></td>
+      </tr>
+      <tr>
+        <td rowspan="2"><strong>Vendor blogs</strong></td>
+        <td>ShopSwedishSweets.com</td>
+        <td>15–25</td>
+        <td>Store blog with "Top 10" lists</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+      <tr>
+        <td>SukarCo.com</td>
+        <td>20–30</td>
+        <td>"20 Best Swedish Candy" blog post</td>
+        <td><span class="badge badge-green">Low</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>The Critical Gap: No Independent Review Directory</h3>
+    <p>This is the most important finding in this audit. Look at who ranks for the key terms:</p>
+
+    <table>
+      <tr>
+        <th>Keyword</th>
+        <th>Who Ranks #1–3</th>
+        <th>Gap for SwedishCrave</th>
+      </tr>
+      <tr>
+        <td>"best swedish candy"</td>
+        <td>TastingTable, Sporked, store blogs</td>
+        <td><span class="badge badge-green">High — 1 article each, no depth</span></td>
+      </tr>
+      <tr>
+        <td>"swedish candy ranked"</td>
+        <td>TastingTable, Yahoo (syndicated)</td>
+        <td><span class="badge badge-green">High — you can outrank with 38 product reviews</span></td>
+      </tr>
+      <tr>
+        <td>"buy swedish candy online"</td>
+        <td>SwedishCandyLand, Sockerbit, stores</td>
+        <td><span class="badge badge-amber">Medium — e-commerce intent, but "where to buy" guide fits</span></td>
+      </tr>
+      <tr>
+        <td>"bubs candy review"</td>
+        <td>SpoonUniversity (1 post), TastingTable</td>
+        <td><span class="badge badge-green">Very high — you have dedicated pages</span></td>
+      </tr>
+      <tr>
+        <td>"ahlgrens bilar review"</td>
+        <td>Thin results, mostly YouTube</td>
+        <td><span class="badge badge-green">Very high — near-zero competition</span></td>
+      </tr>
+      <tr>
+        <td>"swedish candy vs american candy"</td>
+        <td>YouTube, blog snippets</td>
+        <td><span class="badge badge-green">Very high — no dedicated comparison content</span></td>
+      </tr>
+      <tr>
+        <td>"marabou chocolate review"</td>
+        <td>Thin results, few actual reviews</td>
+        <td><span class="badge badge-green">Very high — you have a dedicated page</span></td>
+      </tr>
+      <tr>
+        <td>"swedish sour candy"</td>
+        <td>E-commerce category pages</td>
+        <td><span class="badge badge-green">High — editorial review beats product page</span></td>
+      </tr>
+    </table>
+
+    <div class="callout callout-green">
+      <strong>Key insight:</strong> The Swedish candy SERP is dominated by either (a) high-DR media sites with 1 article each, or (b) e-commerce stores with product pages. Nobody has built a comprehensive, multi-page review directory. This is the exact same opportunity as FieldSalesTools.com — you win not by having higher DR, but by having <strong>deeper, more comprehensive content</strong> across dozens of pages that build topical authority.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Why SwedishCrave Can Win</h3>
+
+    <h4>1. Media sites won't go deeper</h4>
+    <p>TastingTable wrote ONE article ranking 21 candies. They won't build 38 individual product reviews, brand pages, and category hubs. Their model is breadth across thousands of food topics, not depth in Swedish candy. You own depth.</p>
+
+    <h4>2. E-commerce stores can't be independent</h4>
+    <p>Sockerbit, BonBon, and SwedishCandyLand sell candy. Their "reviews" are biased by default. Google's helpful content updates increasingly favor independent editorial content over vendor content. SwedishCrave reviews products across ALL stores, making it the trusted intermediary — just like Wirecutter for products or FieldSalesTools for field sales software.</p>
+
+    <h4>3. Your 56 pages already establish topical authority</h4>
+    <p>38 product pages + 8 brand pages + 6 category pages + core pages = a content structure no competitor has. As Google crawls and indexes this, it will recognize SwedishCrave as a Swedish candy authority site.</p>
+
+    <div class="callout callout-purple">
+      <strong>The FieldSalesTools playbook applied:</strong> Just as FieldSalesTools beats vendor blogs (SPOTIO, SalesRabbit) by being independent, and beats G2/Capterra by being niche-deep, SwedishCrave beats candy stores by being independent and beats TastingTable by being niche-deep. Same strategy, different market.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 3: KEYWORD OPPORTUNITY ANALYSIS -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phase" id="phase3">
+    <span class="phase-label">Phase 3</span>
+    <h2>Keyword Opportunity Analysis</h2>
+    <p class="desc">Which keywords should SwedishCrave target and what's the traffic potential?</p>
+  </div>
+
+  <div class="card">
+    <h3>Keyword Categories &amp; Estimated Volumes</h3>
+    <p>Unlike field sales (pure B2B, low volume per keyword), Swedish candy keywords have <strong>higher individual volumes</strong> due to consumer interest and viral momentum. The trade-off: lower commercial value per visitor, but much higher traffic ceiling.</p>
+
+    <table>
+      <tr>
+        <th>Keyword Category</th>
+        <th>Example Keywords</th>
+        <th>Est. Monthly Vol (US)</th>
+        <th>KD</th>
+        <th>Your Pages</th>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Head terms</strong></td>
+        <td>"swedish candy", "swedish sweets"</td>
+        <td class="kw-vol">15,000–30,000</td>
+        <td class="kw-diff-high">High</td>
+        <td>Homepage, /candy/</td>
+      </tr>
+      <tr>
+        <td><strong>Buy intent</strong></td>
+        <td>"buy swedish candy", "swedish candy online"</td>
+        <td class="kw-vol">3,000–8,000</td>
+        <td class="kw-diff-med">Medium</td>
+        <td>/where-to-buy/</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Review/ranking</strong></td>
+        <td>"best swedish candy", "swedish candy ranked"</td>
+        <td class="kw-vol">2,000–5,000</td>
+        <td class="kw-diff-med">Medium</td>
+        <td>/candy/, blog</td>
+      </tr>
+      <tr>
+        <td><strong>Product-specific</strong></td>
+        <td>"bubs candy review", "ahlgrens bilar"</td>
+        <td class="kw-vol">500–2,000 each</td>
+        <td class="kw-diff-low">Low</td>
+        <td>38 product pages</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Brand-specific</strong></td>
+        <td>"malaco candy", "marabou chocolate USA"</td>
+        <td class="kw-vol">500–3,000 each</td>
+        <td class="kw-diff-low">Low</td>
+        <td>8 brand pages</td>
+      </tr>
+      <tr>
+        <td><strong>Category</strong></td>
+        <td>"swedish sour candy", "swedish licorice", "salmiak candy"</td>
+        <td class="kw-vol">1,000–5,000 each</td>
+        <td class="kw-diff-low">Low–Med</td>
+        <td>6 category pages</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Comparison/educational</strong></td>
+        <td>"swedish candy vs american", "why is swedish candy popular"</td>
+        <td class="kw-vol">500–2,000 each</td>
+        <td class="kw-diff-low">Very Low</td>
+        <td>Blog (to create)</td>
+      </tr>
+      <tr>
+        <td><strong>Viral/trending</strong></td>
+        <td>"tiktok swedish candy", "bubs tiktok candy"</td>
+        <td class="kw-vol">2,000–8,000</td>
+        <td class="kw-diff-low">Low</td>
+        <td>Trending section</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>Seasonal</strong></td>
+        <td>"swedish christmas candy", "swedish candy gift"</td>
+        <td class="kw-vol">1,000–5,000 (seasonal)</td>
+        <td class="kw-diff-low">Low</td>
+        <td>To create</td>
+      </tr>
+    </table>
+
+    <div class="callout callout-green">
+      <strong>Total addressable search volume:</strong> The combined keyword universe for Swedish candy in the US is estimated at <strong>40,000–80,000 monthly searches</strong> — roughly 5–8x the FieldSalesTools niche. At a 10% capture rate (conservative for a top-authority site), that's <strong>4,000–8,000 monthly visitors</strong>, growing as the trend matures.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Priority Keywords — Highest ROI Per Effort</h3>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Keyword Cluster</th>
+        <th>Est. Vol</th>
+        <th>KD</th>
+        <th>Why Priority</th>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td><strong>1</strong></td>
+        <td>"[product] review" (bubs, marabou, daim, etc.)</td>
+        <td>500–2,000 ea</td>
+        <td class="kw-diff-low">Low</td>
+        <td>38 pages ready, near-zero competition</td>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td><strong>2</strong></td>
+        <td>"best swedish [category]" (sour, licorice, gummies)</td>
+        <td>1,000–3,000 ea</td>
+        <td class="kw-diff-low">Low–Med</td>
+        <td>6 category pages target these directly</td>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td><strong>3</strong></td>
+        <td>"where to buy swedish candy" + store comparisons</td>
+        <td>3,000–5,000</td>
+        <td class="kw-diff-med">Medium</td>
+        <td>High affiliate conversion — visitors ready to buy</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>"swedish candy tiktok" / "viral swedish candy"</td>
+        <td>2,000–8,000</td>
+        <td class="kw-diff-low">Low</td>
+        <td>Trending section captures viral traffic</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td>"[brand] candy" (bubs, malaco, fazer, cloetta)</td>
+        <td>500–3,000 ea</td>
+        <td class="kw-diff-low">Low</td>
+        <td>8 brand pages, informational + affiliate</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td>"swedish candy gift box" / "candy gift set"</td>
+        <td>1,000–3,000</td>
+        <td class="kw-diff-med">Medium</td>
+        <td>High conversion: gift buyers have $30–60 AOV</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td>"swedish candy subscription box"</td>
+        <td>500–1,500</td>
+        <td class="kw-diff-low">Low</td>
+        <td>Recurring affiliate revenue opportunity</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Content Gaps — Pages to Create</h3>
+    <p>Your 56 pages are a strong foundation. Here are the highest-value additions:</p>
+
+    <h4>HIGH priority (create within 2 weeks):</h4>
+    <ul>
+      <li><strong>Blog/guide content</strong> — "Ultimate Guide to Swedish Candy," "Swedish Candy for Beginners," "Swedish vs American Candy Compared" (captures educational/viral traffic)</li>
+      <li><strong>Store comparison page</strong> — Compare the 6+ online Swedish candy stores (price, shipping, selection). This is your highest-converting page — the "compare" equivalent from FieldSalesTools</li>
+      <li><strong>"Best Swedish Candy Gift Boxes"</strong> — Seasonal traffic goldmine, especially Q4</li>
+      <li><strong>TikTok Trending page</strong> — Dedicated page for currently viral candies, updated regularly</li>
+    </ul>
+
+    <h4>MEDIUM priority (within 1 month):</h4>
+    <ul>
+      <li><strong>Individual store reviews</strong> — "Sockerbit Review," "BonBon NYC Review," "Swedish Candy Land Review" (the same concept as FieldSalesTools' /tools/ pages)</li>
+      <li><strong>"Swedish Candy Subscription Boxes Compared"</strong> — Recurring affiliate revenue</li>
+      <li><strong>Seasonal content</strong> — Christmas, Easter, Halloween Swedish candy guides</li>
+      <li><strong>Regional pages</strong> — "Swedish Candy Stores in NYC," "Swedish Candy Near Me"</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- PHASE 4: BUSINESS MODEL & REVENUE -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phase" id="phase4">
+    <span class="phase-label">Phase 4</span>
+    <h2>Directory Business Model &amp; Revenue Analysis</h2>
+    <p class="desc">How does SwedishCrave make money, and how much?</p>
+  </div>
+
+  <div class="card">
+    <h3>Revenue Streams — Validated</h3>
+    <p>SwedishCrave has access to multiple proven monetization paths. Unlike FieldSalesTools (which relies on high-value B2B affiliate deals), SwedishCrave targets <strong>higher volume, lower per-transaction value</strong>.</p>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="icon">&#127852;</div>
+        <h4>Candy Store Affiliates</h4>
+        <p>10–15% commission. Multiple programs: Swedish Sweets (10%), MUMS (15%), Scandi Candy, BonBon (Awin), Swedish Gift Store (10%). Average order: $25–45.</p>
+      </div>
+      <div class="summary-item">
+        <div class="icon">&#128230;</div>
+        <h4>Amazon Associates</h4>
+        <p>4–8% on candy/food. BUBS, Marabou, and other Swedish candies now available on Amazon. Lower commission but massive trust + conversion rate.</p>
+      </div>
+      <div class="summary-item">
+        <div class="icon">&#128200;</div>
+        <h4>Display Ads (Mediavine/AdThrive)</h4>
+        <p>$15–30 RPM for food/lifestyle content. At 10K+ sessions/month, qualifies for Mediavine ($150–300/month). At 50K: $750–1,500/month.</p>
+      </div>
+      <div class="summary-item">
+        <div class="icon">&#11088;</div>
+        <h4>Featured/Sponsored Listings</h4>
+        <p>Charge stores for premium placement. $99–299/month once traffic justifies it. Multiple candy stores competing for visibility.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue Projections</h3>
+
+    <table>
+      <tr>
+        <th>Revenue Stream</th>
+        <th>Mechanism</th>
+        <th>Per-Unit Value</th>
+        <th>Month 6</th>
+        <th>Month 12</th>
+      </tr>
+      <tr class="rev-highlight">
+        <td><strong>Candy store affiliates</strong></td>
+        <td>10–15% per order</td>
+        <td>$3–6/sale</td>
+        <td>$150–400</td>
+        <td>$500–1,200</td>
+      </tr>
+      <tr>
+        <td><strong>Amazon Associates</strong></td>
+        <td>4–8% on candy purchases</td>
+        <td>$1–3/sale</td>
+        <td>$50–150</td>
+        <td>$200–500</td>
+      </tr>
+      <tr>
+        <td><strong>Display ads</strong></td>
+        <td>Mediavine/AdThrive RPM</td>
+        <td>$15–30 RPM</td>
+        <td>$100–300</td>
+        <td>$400–1,200</td>
+      </tr>
+      <tr>
+        <td><strong>Featured listings</strong></td>
+        <td>Store placement fees</td>
+        <td>$99–299/mo</td>
+        <td>$0–99</td>
+        <td>$99–598</td>
+      </tr>
+      <tr>
+        <td><strong>Subscription box affiliates</strong></td>
+        <td>Recurring commissions</td>
+        <td>$5–10/signup</td>
+        <td>$0–50</td>
+        <td>$50–200</td>
+      </tr>
+      <tr style="background: var(--light-purple); font-weight: 700;">
+        <td><strong>TOTAL</strong></td>
+        <td></td>
+        <td></td>
+        <td><strong>$300–1,000</strong></td>
+        <td><strong>$1,250–3,700</strong></td>
+      </tr>
+    </table>
+
+    <div class="callout callout-amber">
+      <strong>Honest comparison with FieldSalesTools:</strong> SwedishCrave's per-visitor revenue is lower ($0.05–0.15 vs. $0.50–2.00 for FieldSalesTools). B2C candy affiliate commissions ($3–6/sale) can't match B2B SaaS ($200–1,500/conversion). However, SwedishCrave has <strong>5–10x the traffic potential</strong>. The revenue ceiling is roughly similar ($2,000–5,000/month at maturity), but the paths differ: FieldSalesTools gets there with low traffic + high value; SwedishCrave gets there with high traffic + lower value. Display ads become a meaningful revenue stream for SwedishCrave (they don't for FieldSalesTools at B2B traffic levels).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Traffic-to-Revenue Model</h3>
+
+    <table>
+      <tr>
+        <th>Metric</th>
+        <th>Conservative</th>
+        <th>Expected</th>
+        <th>Optimistic</th>
+      </tr>
+      <tr>
+        <td>Monthly visitors (Mo. 6)</td>
+        <td>1,500</td>
+        <td>5,000</td>
+        <td>15,000</td>
+      </tr>
+      <tr>
+        <td>Affiliate click-through</td>
+        <td>5%</td>
+        <td>8%</td>
+        <td>12%</td>
+      </tr>
+      <tr>
+        <td>Affiliate clicks/month</td>
+        <td>75</td>
+        <td>400</td>
+        <td>1,800</td>
+      </tr>
+      <tr>
+        <td>Conversion rate</td>
+        <td>3%</td>
+        <td>5%</td>
+        <td>8%</td>
+      </tr>
+      <tr>
+        <td>Sales/month</td>
+        <td>2.3</td>
+        <td>20</td>
+        <td>144</td>
+      </tr>
+      <tr>
+        <td>Avg commission/sale</td>
+        <td>$4</td>
+        <td>$5</td>
+        <td>$6</td>
+      </tr>
+      <tr>
+        <td>Affiliate revenue</td>
+        <td>$9</td>
+        <td>$100</td>
+        <td>$864</td>
+      </tr>
+      <tr>
+        <td>Display ad revenue ($20 RPM)</td>
+        <td>$30</td>
+        <td>$100</td>
+        <td>$300</td>
+      </tr>
+      <tr style="background: var(--light-purple); font-weight: 700;">
+        <td>Total monthly (Mo. 6)</td>
+        <td>$39</td>
+        <td>$200</td>
+        <td>$1,164</td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 12px;">The "expected" scenario assumes steady SEO indexing of 56 pages plus new content additions, with modest social media amplification. The "optimistic" scenario assumes one or more pieces of content go semi-viral or rank well for high-volume terms.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Real Revenue Accelerator: Going Viral</h3>
+    <p>Unlike B2B sites, candy review content has <strong>massive viral potential</strong>. A single TikTok or Instagram Reel featuring "I ranked every Swedish candy" could drive 10,000–100,000 visits in a week. This is a distribution channel FieldSalesTools doesn't have.</p>
+
+    <h4>Social media strategy that amplifies SEO:</h4>
+    <ul>
+      <li><strong>TikTok/Reels:</strong> Short candy taste-test videos → link to full reviews on site</li>
+      <li><strong>Pinterest:</strong> "Swedish Candy Guide" pins → evergreen traffic source for food content</li>
+      <li><strong>Reddit:</strong> r/candy, r/Sweden, r/snackexchange — authentic community engagement</li>
+      <li><strong>YouTube:</strong> "Ranking Every Swedish Candy" format → drives backlinks + traffic</li>
+    </ul>
+
+    <div class="callout callout-green">
+      <strong>Viral + SEO = compound growth.</strong> Social media drives initial traffic spikes. Those visitors who bookmark or return boost engagement signals. Backlinks from social shares improve DR. Higher DR improves organic rankings. More organic traffic → more affiliate revenue. This is the flywheel that B2C content sites use — and it's available to SwedishCrave but not to FieldSalesTools.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MASTERPLAN SYNERGIES -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phase" id="masterplan">
+    <span class="phase-label">Phase 5</span>
+    <h2>Masterplan Synergies &amp; Action Items</h2>
+    <p class="desc">How SwedishCrave connects to your overall business strategy</p>
+  </div>
+
+  <div class="card">
+    <h3>SwedishCrave vs FieldSalesTools — Portfolio View</h3>
+    <p>Running both sites creates a diversified revenue portfolio:</p>
+
+    <div class="vs-box">
+      <div class="site">
+        <h4>FieldSalesTools.com</h4>
+        <p>B2B &bull; High value per visitor<br>Slow, predictable growth<br>$3K–6K/mo at maturity</p>
+      </div>
+      <div class="vs">VS</div>
+      <div class="site">
+        <h4>SwedishCrave.com</h4>
+        <p>B2C &bull; High volume traffic<br>Viral potential, trend-driven<br>$1.5K–4K/mo at maturity</p>
+      </div>
+    </div>
+
+    <table>
+      <tr>
+        <th>Dimension</th>
+        <th>FieldSalesTools</th>
+        <th>SwedishCrave</th>
+      </tr>
+      <tr>
+        <td>Market type</td>
+        <td>B2B SaaS</td>
+        <td>B2C Consumer</td>
+      </tr>
+      <tr>
+        <td>Revenue per visitor</td>
+        <td>$0.50–2.00</td>
+        <td>$0.03–0.15</td>
+      </tr>
+      <tr>
+        <td>Traffic potential</td>
+        <td>5,000–12,000/mo</td>
+        <td>15,000–50,000/mo</td>
+      </tr>
+      <tr>
+        <td>Time to revenue</td>
+        <td>3–6 months</td>
+        <td>2–4 months (if social + SEO)</td>
+      </tr>
+      <tr>
+        <td>Revenue at month 12</td>
+        <td>$3,000–6,000/mo</td>
+        <td>$1,250–3,700/mo</td>
+      </tr>
+      <tr>
+        <td>Viral potential</td>
+        <td>Low (B2B)</td>
+        <td>High (TikTok, Pinterest)</td>
+      </tr>
+      <tr>
+        <td>Trend risk</td>
+        <td>Low (stable market)</td>
+        <td>Medium (viral trend may cool)</td>
+      </tr>
+      <tr style="background: var(--light-purple); font-weight: 700;">
+        <td>Combined portfolio</td>
+        <td colspan="2"><strong>$4,250–9,700/month within 12 months</strong></td>
+      </tr>
+    </table>
+
+    <div class="callout callout-purple">
+      <strong>Portfolio strategy:</strong> FieldSalesTools is your stable, high-value asset. SwedishCrave is your high-growth, viral-potential asset. Together they diversify across B2B/B2C, organic/social, and different affiliate commission structures. The same site-building skills and SEO principles apply to both — what you learn building one accelerates the other.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Top 10 Action Items for SwedishCrave</h3>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Action</th>
+        <th>Impact</th>
+        <th>Effort</th>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td>1</td>
+        <td><strong>Submit sitemap to Google Search Console + Bing</strong></td>
+        <td><span class="badge badge-green">Very High</span></td>
+        <td>15 min</td>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td>2</td>
+        <td><strong>Create "Where to Buy" store comparison page</strong> with affiliate links to all 6+ stores</td>
+        <td><span class="badge badge-green">Very High</span></td>
+        <td>2 hrs</td>
+      </tr>
+      <tr style="background: #f0fdf4;">
+        <td>3</td>
+        <td><strong>Sign up for 3–4 affiliate programs</strong> (MUMS 15%, Swedish Sweets 10%, BonBon/Awin, Amazon)</td>
+        <td><span class="badge badge-green">Very High</span></td>
+        <td>1 hr</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Deepen product reviews</strong> — add 400+ words of editorial content to each candy page (taste, texture, where to buy, who it's for)</td>
+        <td><span class="badge badge-green">High</span></td>
+        <td>4–6 hrs</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Create 5 blog posts</strong> ("Ultimate Guide to Swedish Candy," "Swedish vs American Candy," "Best Swedish Candy Gifts," "TikTok Candy Guide," "Beginner's Guide to Salmiak")</td>
+        <td><span class="badge badge-green">High</span></td>
+        <td>4–6 hrs</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Build individual store review pages</strong> (Sockerbit, BonBon, SwedishCandyLand, etc.) — equivalent to FieldSalesTools' /tools/ pages</td>
+        <td><span class="badge badge-green">High</span></td>
+        <td>3–4 hrs</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Set up Pinterest account</strong> + pin all product pages (food content gets massive Pinterest traffic)</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+        <td>1 hr</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Apply for Google AdSense</strong> (initial display ad revenue while building to Mediavine threshold)</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+        <td>30 min</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Create "Swedish Candy Subscription Boxes Compared" page</strong> — recurring affiliate revenue</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+        <td>2 hrs</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Outreach to 5 Swedish candy stores</strong> — offer featured listing, request affiliate approval</td>
+        <td><span class="badge badge-amber">Medium</span></td>
+        <td>1 hr</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card" style="border: 2px solid var(--purple); background: var(--light-purple);">
+    <h3>Bottom Line — Can SwedishCrave Make Money?</h3>
+    <p style="font-size: 15px;"><strong>Yes — but it's a different game than FieldSalesTools.</strong></p>
+    <p style="font-size: 15px;">SwedishCrave is entering a <strong>viral, high-growth consumer niche</strong> with a comprehensive 56-page site that no competitor has built. The Swedish candy trend is real ($240% search growth, 120M+ TikTok views, mainstream media coverage), and the timing is ideal — post-awareness, pre-saturation.</p>
+    <p style="font-size: 15px;"><strong>Realistic revenue:</strong> $1,250–3,700/month within 12 months through a mix of candy store affiliates (10–15%), Amazon Associates, display ads, and featured listings. This is lower per-visitor than FieldSalesTools but compensated by 5–10x higher traffic potential.</p>
+    <p style="font-size: 15px;"><strong>The upside case:</strong> If any content goes semi-viral on TikTok/Pinterest/Reddit, traffic could spike to 50K–100K/month, pushing revenue to $3,000–8,000/month. This viral upside doesn't exist for B2B sites.</p>
+    <p style="font-size: 15px;"><strong>Key risks:</strong></p>
+    <ol style="font-size: 15px; margin-top: 8px;">
+      <li><strong>Trend cooling</strong> — Swedish candy hype may fade. Mitigate by broadening to "Nordic candy" or "international candy."</li>
+      <li><strong>Low per-sale commissions</strong> — $3–6/sale means you need volume. Display ads become critical above 10K visitors.</li>
+      <li><strong>E-commerce stores building content</strong> — If Sockerbit or BonBon invest in SEO content, they could outrank on DR alone. Speed matters — build topical authority before they do.</li>
+    </ol>
+    <p style="font-size: 15px; margin-top: 12px;"><strong>Combined with FieldSalesTools, your portfolio targets $4,250–9,700/month within 12 months</strong> — a solid diversified income stream with both stable (B2B) and growth (B2C) components.</p>
+  </div>
+
+  <div class="footer">
+    <p>SEO Audit prepared for SwedishCrave.com &bull; March 2026</p>
+    <p>Data sources: Web research, TikTok trend data, affiliate program data, SERP analysis, industry reports</p>
+  </div>
+
+</div>
+
+</body>
+</html>
